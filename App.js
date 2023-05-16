@@ -6,7 +6,6 @@ import FacultiesScreen from './screens/FacultiesScreen';
 import CoursesScreen from './screens/CoursesScreen';
 import CourseScreen from './screens/CourseScreen';
 import FeedbackScreen from './screens/FeedbackScreen';
-import ScoreScreen from './screens/ScoreScreen';
 import ForumScreen from './screens/ForumScreen';
 
 import { CourseContext } from './screens/CourseContext'; // make sure the path is correct
@@ -24,7 +23,6 @@ function App() {
                     <Stack.Screen name="Courses" component={CoursesScreen} />
                     <Stack.Screen name="Course" component={CourseScreen} />
                     <Stack.Screen name="Feedback" component={FeedbackScreen} />
-                    <Stack.Screen name="Score" component={ScoreScreen} />
                     <Stack.Screen name="Forum" component={ForumScreen} />
                 </Stack.Navigator>
             </NavigationContainer>

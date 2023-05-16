@@ -38,8 +38,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 20, // Adjust the horizontal padding to match the CoursesScreen style
         marginVertical: 8,
         borderRadius: 16, // Add this line to apply the card-like appearance
-        justifyContent: 'center', // Center the text vertically
-        alignItems: 'center', // Center the text horizontally
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
@@ -51,7 +49,7 @@ const styles = StyleSheet.create({
     },
     title: {
         fontSize: 25,
-        fontWeight: "bold", // Add this line to apply the bold font weight
+        // fontWeight: "bold", // Add this line to apply the bold font weight
     },
 });
 
