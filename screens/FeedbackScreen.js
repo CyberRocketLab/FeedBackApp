@@ -23,6 +23,8 @@ function FeedbackScreen({ route, navigation }) {
                 },
             }));
             setSubmitted(false);
+            navigation.goBack();
+
         }
     }, [submitted]);
 
