@@ -4,7 +4,7 @@ import Slider from '@react-native-community/slider';
 import { CourseContext } from './CourseContext';
 
 function FeedbackScreen({ route, navigation }) {
-    const { course } = rouçte.params;
+    const { course } = route.params;
     const { scores, setScores } = useContext(CourseContext);
 
     const [rating1, setRating1] = useState(5);
