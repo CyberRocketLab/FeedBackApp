@@ -22,6 +22,7 @@ function CoursesScreen({ route, navigation }) {
         'Mathematik': {
             '1': ['Math Course 1', 'Math Course 2'],
             '2': ['Math Course 3', 'Math Course 4'],
+
             // ... rest of the semesters
         },
         // ... rest of the faculties
