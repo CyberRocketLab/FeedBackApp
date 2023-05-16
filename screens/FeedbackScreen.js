@@ -1,35 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Button, View, Text } from 'react-native';
 import Slider from '@react-native-community/slider';
+import { CourseContext } from './CourseContext';
 
 function FeedbackScreen({ route, navigation }) {
-    const { course } = route.params;
+    const { course } = rouçte.params;
+    const { scores, setScores } = useContext(CourseContext);
 
     const [rating1, setRating1] = useState(5);
     const [rating2, setRating2] = useState(5);
     const [rating3, setRating3] = useState(5);
     const [submitted, setSubmitted] = useState(false);
-    const [averageScore, setAverageScore] = useState(0);
-    const [numberOfReviews, setNumberOfReviews] = useState(0);
 
     useEffect(() => {
         if (submitted) {
-            const newAverage = ((averageScore * numberOfReviews) + ((rating1 + rating2 + rating3) / 3)) / (numberOfReviews + 1);
-            setAverageScore(newAverage);
-            setNumberOfReviews(numberOfReviews + 1);
+            const newAverage = ((scores[course]?.averageScore * scores[course]?.numberOfReviews || 0) + ((rating1 + rating2 + rating3) / 3)) / ((scores[course]?.numberOfReviews || 0) + 1);
+            setScores(prevScores => ({
+                ...prevScores,
+                [course]: {
+                    averageScore: newAverage,
+                    numberOfReviews: (scores[course]?.numberOfReviews || 0) + 1
+                },
+            }));
             setSubmitted(false);
         }
     }, [submitted]);
 
     const submit = () => {
         setSubmitted(true);
-    };
-
-    const viewScore = () => {
-        navigation.navigate('Score', {
-            course: course,
-            averageScore: averageScore.toFixed(2),
-        });
     };
 
     return (
@@ -45,7 +43,6 @@ function FeedbackScreen({ route, navigation }) {
 
             <Button title="Submit" onPress={submit} />
             {submitted && <Text>Thank you for your review</Text>}
-            <Button title="View Score" onPress={viewScore} />
         </View>
     );
 }
