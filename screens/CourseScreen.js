@@ -4,8 +4,11 @@ import { CourseContext } from './CourseContext';
 
 
 function CourseScreen({ route, navigation }) {
+    // Receiving (course, description) data from route parametr
     const { course, description } = route.params;
+    // Receving (scores) from CourseContext
     const { scores } = useContext(CourseContext);
+    //Calculating average score
     const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
 
     return (
