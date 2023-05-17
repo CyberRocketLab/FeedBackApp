@@ -1,6 +1,7 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
-import { CourseContext } from './CourseContext';
+import React, {useContext} from 'react';
+import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
+import {CourseContext} from './CourseContext';
+
 
 function CourseScreen({ route, navigation }) {
     const { course, description } = route.params;
@@ -16,7 +17,7 @@ function CourseScreen({ route, navigation }) {
                 <TouchableHighlight
                     style={styles.button}
                     underlayColor="#e0dcdc" // Set the background color when the button is pressed
-                    onPress={() => navigation.navigate('Feedback', { course })}
+                    onPress={() => navigation.navigate('Feedback', {course})}
                 >
                     <Text style={styles.buttonText}>Feedback</Text>
                 </TouchableHighlight>
@@ -56,13 +57,32 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
-        backgroundColor: '#f9c2ff',
-        borderRadius: 16,
+
+
         padding: 10,
         marginBottom: 8,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 8,
+
+       
+
+
+        backgroundColor: '#ffffff', // Use a white background color
+        paddingVertical: 15,
+        paddingHorizontal: 20,
+        marginVertical: 5,
+        borderRadius: 5, // Decrease the border radius for a classic look
+        borderColor: '#d3d3d3', // Use a muted border color
+        borderWidth: 1,
+        shadowColor: '#000',
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        elevation: 3,
     },
     buttonText: {
         fontSize: 18,
