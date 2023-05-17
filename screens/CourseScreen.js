@@ -2,23 +2,25 @@ import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { CourseContext } from './CourseContext';
 
-function CourseScreen({ route, navigation }) {
-  const { course } = route.params;
-  const { scores } = useContext(CourseContext);
-  const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.courseTitle}>{course}</Text>
-      <Text style={styles.averageScore}>Average Score: {averageScore}</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="#E0DCDC"
-          onPress={() => navigation.navigate('Feedback', { course })}
-        >
-          <Text style={styles.buttonText}>Feedback</Text>
-        </TouchableHighlight>
+function CourseScreen({ route, navigation }) {
+    const { course, description } = route.params;
+    const { scores } = useContext(CourseContext);
+    const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
+
+    return (
+        <View style={styles.container}>
+            <Text style={styles.courseTitle}>{course}</Text>
+            <Text style={styles.description}>{description}</Text>
+            <Text style={styles.averageScore}>Average Score: {averageScore}</Text>
+            <View style={styles.buttonContainer}>
+                <TouchableHighlight
+                    style={styles.button}
+                    underlayColor="#e0dcdc" // Set the background color when the button is pressed
+                    onPress={() => navigation.navigate('Feedback', {course})}
+                >
+                    <Text style={styles.buttonText}>Feedback</Text>
+                </TouchableHighlight>
 
         <TouchableHighlight
           style={styles.button}
