@@ -1,10 +1,10 @@
-
 import React, {useState, useRef, useLayoutEffect} from 'react';
 import {View, Text, StyleSheet, ScrollView, TouchableHighlight, TextInput} from 'react-native';
+
 import Icon from 'react-native-vector-icons/Ionicons';
 
-function CoursesScreen({route, navigation}) {
-    const {faculty} = route.params;
+function CoursesScreen({ route, navigation }) {
+  const { faculty } = route.params;
 
     const faculties = {
         'Informatik': {
@@ -150,36 +150,36 @@ function CoursesScreen({route, navigation}) {
 
     const semesters = faculties[faculty];
 
-    const [searchTerm, setSearchTerm] = useState('');
-    const [searchVisible, setSearchVisible] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchVisible, setSearchVisible] = useState(false);
 
-    const inputRef = useRef(null);
+  const inputRef = useRef(null);
 
-    const filteredCourses = Object.values(semesters).flatMap(courses => courses.filter(course =>
-        course.toLowerCase().includes(searchTerm.toLowerCase())
-    ));
+  const filteredCourses = Object.values(semesters).flatMap(courses => courses.filter(course =>
+    course.toLowerCase().includes(searchTerm.toLowerCase())
+  ));
 
-    const toggleSearch = () => {
-        setSearchVisible(!searchVisible);
-        setSearchTerm('');
-        if (!searchVisible) {
-            setTimeout(() => inputRef.current.focus(), 100);
-        }
-    };
+  const toggleSearch = () => {
+    setSearchVisible(!searchVisible);
+    setSearchTerm('');
+    if (!searchVisible) {
+      setTimeout(() => inputRef.current.focus(), 100);
+    }
+  };
 
-    useLayoutEffect(() => {
-        navigation.setOptions({
-            headerRight: () => (
-                <Icon
-                    name={searchVisible ? 'close-outline' : 'search-outline'}
-                    size={30}
-                    color="black"
-                    style={{marginRight: 16}}
-                    onPress={toggleSearch}
-                />
-            ),
-        });
-    }, [navigation, searchVisible]);
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <Icon
+          name={searchVisible ? 'close-outline' : 'search-outline'}
+          size={30}
+          color="black"
+          style={{ marginRight: 16 }}
+          onPress={toggleSearch}
+        />
+      ),
+    });
+  }, [navigation, searchVisible]);
 
     return (
         <ScrollView style={styles.container}>
@@ -219,63 +219,63 @@ function CoursesScreen({route, navigation}) {
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#f5f5f5',
+  container: {
+    flex: 1,
+    backgroundColor: '#F5F5F5',
+  },
+  input: {
+    height: 40,
+    borderColor: '#E0E0E0',
+    borderWidth: 1,
+    paddingLeft: 10,
+    margin: 16,
+    borderRadius: 5,
+    backgroundColor: '#FFFFFF',
+    fontSize: 16,
+  },
+  semesterContainer: {
+    backgroundColor: '#FFFFFF',
+    paddingVertical: 10,
+    paddingHorizontal: 10,
+    marginVertical: 8,
+    marginHorizontal: 8,
+    borderRadius: 5,
+    borderColor: '#E0E0E0',
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
     },
-    input: {
-        height: 40,
-        borderColor: '#d3d3d3',
-        borderWidth: 1,
-        paddingLeft: 10,
-        margin: 16,
-        borderRadius: 5,
-        backgroundColor: '#ffffff',
-        fontSize: 16,
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 3,
+  },
+  semesterTitle: {
+    fontSize: 24,
+    paddingBottom: 10,
+    paddingLeft: 10,
+  },
+  courseCard: {
+    backgroundColor: '#FFFFFF',
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    marginVertical: 5,
+    borderRadius: 5,
+    borderColor: '#E0E0E0',
+    borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
     },
-    semesterContainer: {
-        backgroundColor: '#ffffff', // Use a white background color
-        paddingVertical: 10,
-        paddingHorizontal: 10,
-        marginVertical: 8,
-        marginHorizontal: 8,
-        borderRadius: 5, // Decrease the border radius for a classic look
-        borderColor: '#d3d3d3', // Use a muted border color
-        borderWidth: 1,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 3,
-    },
-    semesterTitle: {
-        fontSize: 24,
-        paddingBottom: 10,
-        paddingLeft: 10,
-    },
-    courseCard: {
-        backgroundColor: '#ffffff', // Use a white background color
-        paddingVertical: 15,
-        paddingHorizontal: 20,
-        marginVertical: 5,
-        borderRadius: 5, // Decrease the border radius for a classic look
-        borderColor: '#d3d3d3', // Use a muted border color
-        borderWidth: 1,
-        shadowColor: '#000',
-        shadowOffset: {
-            width: 0,
-            height: 1,
-        },
-        shadowOpacity: 0.22,
-        shadowRadius: 2.22,
-        elevation: 3,
-    },
-    courseTitle: {
-        fontSize: 16,
-    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 3,
+  },
+  courseTitle: {
+    fontSize: 16,
+  },
 });
 
 export default CoursesScreen;
