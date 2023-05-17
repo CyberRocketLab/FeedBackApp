@@ -3,13 +3,14 @@ import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { CourseContext } from './CourseContext';
 
 function CourseScreen({ route, navigation }) {
-    const { course } = route.params;
+    const { course, description } = route.params;
     const { scores } = useContext(CourseContext);
     const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
 
     return (
         <View style={styles.container}>
             <Text style={styles.courseTitle}>{course}</Text>
+            <Text style={styles.description}>{description}</Text>
             <Text style={styles.averageScore}>Average Score: {averageScore}</Text>
             <View style={styles.buttonContainer}>
                 <TouchableHighlight
@@ -66,6 +67,9 @@ const styles = StyleSheet.create({
     buttonText: {
         fontSize: 18,
     },
+    description: {
+        fontSize: 18,
+    }
 });
 
 export default CourseScreen;
