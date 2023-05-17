@@ -9,9 +9,9 @@ import CoursesScreen from './screens/CoursesScreen';
 import CourseScreen from './screens/CourseScreen';
 import FeedbackScreen from './screens/FeedbackScreen';
 import ForumScreen from './screens/ForumScreen';
-import PersonalSettingsScreen from './screens/PersonalSettingsScreen'; // Import your PersonalSettingsScreen
+import PersonalSettingsScreen from './screens/PersonalSettingsScreen';
 
-import {CourseContext} from './screens/CourseContext'; // make sure the path is correct
+import {CourseContext} from './screens/CourseContext';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -52,23 +52,21 @@ function App() {
                     screenOptions={({route}) => ({
                         tabBarIcon: ({focused, color, size}) => {
                             let iconName;
-
-                            // Select an icon based on the route name
                             if (route.name === 'Home') {
                                 iconName = focused ? 'home' : 'home-outline';
                             } else if (route.name === 'Settings') {
                                 iconName = focused ? 'settings' : 'settings-outline';
                             }
-
-                            // Return the Icon component
                             return <Ionicons name={iconName} size={size} color={color}/>;
-                        },
+                            },
+                        tabBarActiveTintColor: 'tomato',
+                        tabBarInactiveTintColor: 'gray',
+                        tabBarStyle: [
+                            { display: "flex" },
+                            null
+                        ]
                     })}
-                    tabBarOptions={{
-                        activeTintColor: 'tomato',
-                        inactiveTintColor: 'gray',
-                    }}
-                >
+                    >
                     <Tab.Screen
                         name="Home"
                         component={HomeStack}
@@ -78,7 +76,7 @@ function App() {
                 </Tab.Navigator>
             </NavigationContainer>
         </CourseContext.Provider>
-    );
+        );
 }
 
 export default App;
