@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
 import { CourseContext } from './CourseContext';
 
-
 function CourseScreen({ route, navigation }) {
     // Receiving (course, description) data from route parametr
     const { course, description } = route.params;
@@ -11,19 +10,21 @@ function CourseScreen({ route, navigation }) {
     //Calculating average score
     const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
 
-    return (
-        <View style={styles.container}>
-            <Text style={styles.courseTitle}>{course}</Text>
-            <Text style={styles.description}>{description}</Text>
-            <Text style={styles.averageScore}>Average Score: {averageScore}</Text>
-            <View style={styles.buttonContainer}>
-                <TouchableHighlight
-                    style={styles.button}
-                    underlayColor="#e0dcdc" // Set the background color when the button is pressed
-                    onPress={() => navigation.navigate('Feedback', {course})}
-                >
-                    <Text style={styles.buttonText}>Feedback</Text>
-                </TouchableHighlight>
+  return (
+    <View style={styles.container}>
+      <Text style={styles.courseTitle}>{course}</Text>
+      <View style={styles.descriptionContainer}>
+        <Text style={styles.description}>{description}</Text>
+      </View>
+      <Text style={styles.averageScore}>Average Difficulty: {averageScore}</Text>
+      <View style={styles.buttonContainer}>
+        <TouchableHighlight
+          style={styles.button}
+          underlayColor="#e0dcdc"
+          onPress={() => navigation.navigate('Feedback', { course })}
+        >
+          <Text style={styles.buttonText}>Feedback</Text>
+        </TouchableHighlight>
 
         <TouchableHighlight
           style={styles.button}
@@ -41,13 +42,23 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 20,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F5F5F5',
   },
   courseTitle: {
     fontSize: 25,
     fontWeight: 'bold',
     paddingBottom: 15,
     paddingLeft: 10,
+  },
+  descriptionContainer: {
+    backgroundColor: '#FFFFFF',
+    borderRadius: 8,
+    padding: 16,
+    marginBottom: 10,
+  },
+  description: {
+    fontSize: 16,
+    lineHeight: 24,
   },
   averageScore: {
     fontSize: 18,

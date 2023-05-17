@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, ScrollView, Text, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import { View, TextInput, ScrollView, Text, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform, SafeAreaView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { MaterialIcons } from '@expo/vector-icons';
 
@@ -47,25 +47,32 @@ function ForumScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
     >
-      <ScrollView style={styles.messagesContainer}>
-        {messages.map((message, index) => (
-          <View key={index} style={styles.messageContainer}>
-            <Text style={styles.messageText}>{message}</Text>
-            <TouchableOpacity onPress={() => deleteMessage(index)}>
-              <MaterialIcons name="delete" size={24} color="red" />
+      <SafeAreaView style={styles.container}>
+        <ScrollView style={styles.messagesContainer} contentContainerStyle={styles.messagesContentContainer}>
+          {messages.map((message, index) => (
+            <TouchableOpacity
+              key={index}
+              style={styles.messageContainer}
+              onLongPress={() => deleteMessage(index)}
+            >
+              <View style={styles.messageContent}>
+                <Text style={styles.messageText}>{message}</Text>
+              </View>
             </TouchableOpacity>
-          </View>
-        ))}
-      </ScrollView>
-      <View style={styles.inputContainer}>
-        <TextInput
-          value={input}
-          onChangeText={setInput}
-          placeholder="Type your message"
-          style={styles.input}
-        />
-        <Button title="Send" onPress={sendMessage} />
-      </View>
+          ))}
+        </ScrollView>
+        <View style={styles.inputContainer}>
+          <TextInput
+            value={input}
+            onChangeText={setInput}
+            placeholder="Type your message"
+            style={styles.input}
+          />
+          <TouchableOpacity onPress={sendMessage}>
+            <MaterialIcons name="send" size={24} color="black" />
+          </TouchableOpacity>
+        </View>
+      </SafeAreaView>
     </KeyboardAvoidingView>
   );
 }
@@ -73,39 +80,47 @@ function ForumScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     backgroundColor: '#FFFFFF',
   },
   messagesContainer: {
     flex: 1,
-    marginBottom: 8,
+  },
+  messagesContentContainer: {
+    padding: 20,
   },
   messageContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    marginBottom: 16,
+  },
+  messageContent: {
     backgroundColor: '#F9F9F9',
-    borderRadius: 16,
-    padding: 10,
-    marginBottom: 8,
+    padding: 16,
+    borderRadius: 8,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 2,
+    elevation: 3,
   },
   messageText: {
-    flex: 1,
     fontSize: 16,
   },
   inputContainer: {
     flexDirection: 'row',
-    alignItems: 'flex-end',
-    marginBottom: 30,
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    paddingBottom: 20,
   },
   input: {
     flex: 1,
     height: 40,
     borderWidth: 1,
     borderColor: '#CCC',
-    borderRadius: 16,
-    padding: 10,
-    marginRight: 8,
+    borderRadius: 8,
+    paddingHorizontal: 16,
+    marginRight: 16,
   },
 });
 
