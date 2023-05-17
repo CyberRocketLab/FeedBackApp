@@ -30,6 +30,4 @@ function App() {
     );
 }
 
-// Привет Саня
-
 export default App;
