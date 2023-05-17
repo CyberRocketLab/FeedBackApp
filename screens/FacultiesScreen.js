@@ -13,7 +13,7 @@ function FacultiesScreen({ navigation }) {
   const renderItem = ({ item }) => (
     <TouchableHighlight
       style={styles.item}
-      underlayColor="#e0dcdc"
+      underlayColor="#E0DCDC"
       onPress={() => navigation.navigate('Courses', { faculty: item })}
     >
       <Text style={styles.title}>{item}</Text>
@@ -70,16 +70,16 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 16,
-    backgroundColor: '#f5f5f5', // Set a classical background color
+    backgroundColor: '#F5F5F5',
   },
   input: {
     height: 40,
-    borderColor: '#d3d3d3', // Use a muted border color
+    borderColor: '#E0E0E0',
     borderWidth: 1,
     paddingLeft: 10,
     margin: 16,
     borderRadius: 5,
-    backgroundColor: '#ffffff', // Set a white background color
+    backgroundColor: '#FFFFFF',
   },
   list: {
     flex: 1,
@@ -88,25 +88,25 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   item: {
-    backgroundColor: '#ffffff', // Use a white background color
+    backgroundColor: '#FFFFFF',
     paddingVertical: 15,
     paddingHorizontal: 20,
     marginVertical: 5,
-    borderRadius: 5, // Decrease the border radius for a classic look
-    borderColor: '#d3d3d3', // Use a muted border color
+    borderRadius: 5,
+    borderColor: '#E0E0E0',
     borderWidth: 1,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 1,
     },
-    shadowOpacity: 0.22,
-    shadowRadius: 2.22,
-    elevation: 3,
+      shadowOpacity: 0.2,
+      shadowRadius: 2,
+      elevation: 3,
   },
-  title: {
-    fontSize: 20, // Adjust the font size for a classical design
-  },
+    title: {
+      fontSize: 20,
+    },
 });
 
 export default FacultiesScreen;
