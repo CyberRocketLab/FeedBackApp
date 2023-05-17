@@ -1,7 +1,17 @@
-import React, { useState, useEffect } from 'react';
-import { View, TextInput, Button, ScrollView, Text, TouchableOpacity, StyleSheet, KeyboardAvoidingView, Platform } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {
+    View,
+    TextInput,
+    Button,
+    ScrollView,
+    Text,
+    TouchableOpacity,
+    StyleSheet,
+    KeyboardAvoidingView,
+    Platform
+} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { MaterialIcons } from '@expo/vector-icons';
+import {MaterialIcons} from '@expo/vector-icons';
 
 function ForumScreen() {
     const [messages, setMessages] = useState([]);
@@ -71,7 +81,7 @@ function ForumScreen() {
                     <View key={index} style={styles.messageContainer}>
                         <Text style={styles.messageText}>{message}</Text>
                         <TouchableOpacity onPress={() => deleteMessage(index)}>
-                            <MaterialIcons name="delete" size={24} color="red" />
+                            <MaterialIcons name="delete" size={24} color="red"/>
                         </TouchableOpacity>
                     </View>
                 ))}
@@ -83,7 +93,7 @@ function ForumScreen() {
                     placeholder="Type your message"
                     style={styles.input}
                 />
-                <Button title="Send" onPress={sendMessage} />
+                <Button title="Send" onPress={sendMessage}/>
             </View>
         </KeyboardAvoidingView>
     );
