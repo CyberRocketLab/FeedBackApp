@@ -55,6 +55,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 16,
     marginBottom: 10,
+    borderColor: '#E0E0E0',
+    borderWidth: 1,
   },
   description: {
     fontSize: 16,
@@ -83,14 +85,14 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#E0E0E0',
     borderWidth: 1,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 3,
+//    shadowColor: '#000',
+//    shadowOffset: {
+//      width: 0,
+//      height: 1,
+//    },
+//    shadowOpacity: 0.2,
+//    shadowRadius: 2,
+//    elevation: 3,
   },
   buttonText: {
     fontSize: 18,

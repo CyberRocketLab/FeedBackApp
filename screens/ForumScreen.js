@@ -80,7 +80,7 @@ function ForumScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: '#F5F5F5',
   },
   messagesContainer: {
     flex: 1,
@@ -92,17 +92,19 @@ const styles = StyleSheet.create({
     marginBottom: 16,
   },
   messageContent: {
-    backgroundColor: '#F9F9F9',
+    backgroundColor: '#FFFFFF',
     padding: 16,
     borderRadius: 8,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 1,
-    },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 3,
+    borderColor: '#E0E0E0',
+    borderWidth: 1,
+//    shadowColor: '#000',
+//    shadowOffset: {
+//      width: 0,
+//      height: 1,
+//    },
+//    shadowOpacity: 0.2,
+//    shadowRadius: 2,
+//    elevation: 3,
   },
   messageText: {
     fontSize: 16,
@@ -121,6 +123,7 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     paddingHorizontal: 16,
     marginRight: 16,
+    backgroundColor: '#FFFFFF',
   },
 });
 
