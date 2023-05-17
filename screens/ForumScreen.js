@@ -16,22 +16,49 @@ function ForumScreen() {
         });
     }, []);
 
-    const sendMessage = () => {
+//    const sendMessage = () => {
+//        if (input.trim() !== '') {
+//            const newMessages = [...messages, input];
+//            setMessages(newMessages);
+//            // Save messages to AsyncStorage when a new message is sent
+//            AsyncStorage.setItem('messages', JSON.stringify(newMessages));
+//            setInput('');
+//        }
+//    };
+
+    const sendMessage = async () => {
         if (input.trim() !== '') {
             const newMessages = [...messages, input];
             setMessages(newMessages);
             // Save messages to AsyncStorage when a new message is sent
-            AsyncStorage.setItem('messages', JSON.stringify(newMessages));
+            try {
+                await AsyncStorage.setItem('messages', JSON.stringify(newMessages));
+            } catch (error) {
+                console.error("Error saving data", error);
+            }
             setInput('');
         }
     };
 
-    const deleteMessage = (index) => {
+
+//    const deleteMessage = (index) => {
+//        const updatedMessages = [...messages];
+//        updatedMessages.splice(index, 1);
+//        setMessages(updatedMessages);
+//        AsyncStorage.setItem('messages', JSON.stringify(updatedMessages));
+//    };
+
+    const deleteMessage = async (index) => {
         const updatedMessages = [...messages];
         updatedMessages.splice(index, 1);
         setMessages(updatedMessages);
-        AsyncStorage.setItem('messages', JSON.stringify(updatedMessages));
+        try {
+            await AsyncStorage.setItem('messages', JSON.stringify(updatedMessages));
+        } catch (error) {
+            console.error("Error saving data", error);
+        }
     };
+
 
     return (
         <KeyboardAvoidingView
