@@ -56,12 +56,20 @@ const styles = StyleSheet.create({
     button: {
         flex: 1,
         backgroundColor: '#f9c2ff',
-        borderRadius: 16,
+        borderRadius: 10,
         padding: 10,
         marginBottom: 8,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 8,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.22,
+        shadowRadius: 2.22,
+        elevation: 3,
     },
     buttonText: {
         fontSize: 18,
