@@ -117,17 +117,9 @@ import { View, FlatList, Text, StyleSheet, TouchableHighlight } from 'react-nati
 
 function FacultiesScreen({ navigation }) {
 
-  const faculties = ['Informatik', 'Chemie', 'Mathematik'];
+    const inputRef = useRef(null);
 
-  const renderItem = ({ item }) => (
-    <TouchableHighlight
-      style={styles.item}
-      underlayColor="#E0DCDC"
-      onPress={() => navigation.navigate('Courses', { faculty: item })}
-    >
-      <Text style={styles.title}>{item}</Text>
-    </TouchableHighlight>
-  );
+    const faculties = ['Informatik', 'Chemie', 'Mathematik'];
 
   return (
     <View style={styles.container}>
