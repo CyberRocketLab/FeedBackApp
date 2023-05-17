@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
-import { CourseContext } from './CourseContext';
+import React, {useContext} from 'react';
+import {View, Text, StyleSheet, TouchableHighlight} from 'react-native';
+import {CourseContext} from './CourseContext';
 
-function CourseScreen({ route, navigation }) {
-    const { course } = route.params;
-    const { scores } = useContext(CourseContext);
+function CourseScreen({route, navigation}) {
+    const {course} = route.params;
+    const {scores} = useContext(CourseContext);
     const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
 
     return (
@@ -15,7 +15,7 @@ function CourseScreen({ route, navigation }) {
                 <TouchableHighlight
                     style={styles.button}
                     underlayColor="#e0dcdc" // Set the background color when the button is pressed
-                    onPress={() => navigation.navigate('Feedback', { course })}
+                    onPress={() => navigation.navigate('Feedback', {course})}
                 >
                     <Text style={styles.buttonText}>Feedback</Text>
                 </TouchableHighlight>

@@ -1,11 +1,11 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Button, View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import React, {useContext, useState, useEffect} from 'react';
+import {Button, View, Text, StyleSheet, TouchableHighlight} from 'react-native';
 import Slider from '@react-native-community/slider';
-import { CourseContext } from './CourseContext';
+import {CourseContext} from './CourseContext';
 
-function FeedbackScreen({ route, navigation }) {
-    const { course } = route.params;
-    const { scores, setScores } = useContext(CourseContext);
+function FeedbackScreen({route, navigation}) {
+    const {course} = route.params;
+    const {scores, setScores} = useContext(CourseContext);
 
     const [rating1, setRating1] = useState(5);
     const [rating2, setRating2] = useState(5);
@@ -36,13 +36,16 @@ function FeedbackScreen({ route, navigation }) {
             <Text style={styles.title}>Provide Feedback</Text>
 
             <Text style={styles.label}>Difficulty: {rating1}</Text>
-            <Slider value={rating1} onValueChange={setRating1} minimumValue={1} maximumValue={10} step={1} style={styles.slider} />
+            <Slider value={rating1} onValueChange={setRating1} minimumValue={1} maximumValue={10} step={1}
+                    style={styles.slider}/>
 
             <Text style={styles.label}>Question 2: {rating2}</Text>
-            <Slider value={rating2} onValueChange={setRating2} minimumValue={1} maximumValue={10} step={1} style={styles.slider} />
+            <Slider value={rating2} onValueChange={setRating2} minimumValue={1} maximumValue={10} step={1}
+                    style={styles.slider}/>
 
             <Text style={styles.label}>Question 3: {rating3}</Text>
-            <Slider value={rating3} onValueChange={setRating3} minimumValue={1} maximumValue={10} step={1} style={styles.slider} />
+            <Slider value={rating3} onValueChange={setRating3} minimumValue={1} maximumValue={10} step={1}
+                    style={styles.slider}/>
 
             <View style={styles.buttonContainer}>
                 <TouchableHighlight

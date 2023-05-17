@@ -1,8 +1,8 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableHighlight } from 'react-native';
+import {View, Text, StyleSheet, ScrollView, TouchableHighlight} from 'react-native';
 
-function CoursesScreen({ route, navigation }) {
-    const { faculty } = route.params;
+function CoursesScreen({route, navigation}) {
+    const {faculty} = route.params;
 
     // Data structure containing faculties, semesters, and courses
     const faculties = {
@@ -41,7 +41,7 @@ function CoursesScreen({ route, navigation }) {
                             key={course}
                             style={styles.courseCard}
                             underlayColor="#e0dcdc" // Set the background color when the card is pressed
-                            onPress={() => navigation.navigate('Course', { course })}
+                            onPress={() => navigation.navigate('Course', {course})}
                         >
                             <Text style={styles.courseTitle}>{course}</Text>
                         </TouchableHighlight>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         flex: 1,
         marginTop: 10,
         marginHorizontal: 10,
-        backgroundColor:'#ffffff',
+        backgroundColor: '#ffffff',
         borderRadius: 16,
         padding: 10,
         marginBottom: 8,

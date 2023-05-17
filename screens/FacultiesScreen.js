@@ -1,15 +1,15 @@
 import React from 'react';
-import { Button, View, FlatList, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import {Button, View, FlatList, Text, StyleSheet, TouchableHighlight} from 'react-native';
 
-function FacultiesScreen({ navigation }) {
+function FacultiesScreen({navigation}) {
     // Add more faculties as needed
     const faculties = ['Informatik', 'Chemie', 'Mathematik'];
 
-    const renderItem = ({ item }) => (
+    const renderItem = ({item}) => (
         <TouchableHighlight
             style={styles.item}
             underlayColor="#e0dcdc" // Set the background color when the card is pressed
-            onPress={() => navigation.navigate('Courses', { faculty: item })}
+            onPress={() => navigation.navigate('Courses', {faculty: item})}
         >
             <Text style={styles.title}>{item}</Text>
         </TouchableHighlight>
