@@ -55,14 +55,25 @@ const styles = StyleSheet.create({
     },
     button: {
         flex: 1,
-        backgroundColor: '#f9c2ff',
-        borderRadius: 10,
+
+
         padding: 10,
         marginBottom: 8,
         justifyContent: 'center',
         alignItems: 'center',
         marginRight: 8,
-        shadowColor: "#000",
+
+       
+
+
+        backgroundColor: '#ffffff', // Use a white background color
+        paddingVertical: 15,
+        paddingHorizontal: 20,
+        marginVertical: 5,
+        borderRadius: 5, // Decrease the border radius for a classic look
+        borderColor: '#d3d3d3', // Use a muted border color
+        borderWidth: 1,
+        shadowColor: '#000',
         shadowOffset: {
             width: 0,
             height: 1,
