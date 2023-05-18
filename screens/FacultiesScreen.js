@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, FlatList, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, FlatList, Text, StyleSheet, TouchableHighlight, Image } from 'react-native';
 
 function FacultiesScreen({ navigation }) {
 
@@ -17,6 +17,10 @@ function FacultiesScreen({ navigation }) {
 
   return (
     <View style={styles.container}>
+      <Image
+        style={styles.headerImage}
+        source={require('../image/pngUni.png')}
+      />
       <FlatList
         data={faculties}
         renderItem={renderItem}
@@ -33,6 +37,13 @@ const styles = StyleSheet.create({
     paddingTop: 16,
     backgroundColor: '#F5F5F5',
     padding: 16,
+  },
+  headerImage: {
+    width: '100%', // adjust as needed
+    height: 100, // adjust as needed
+    resizeMode: 'contain', // or 'contain'
+    marginTop: 30,
+    marginBottom: 50,
   },
   list: {
     flex: 1,
