@@ -1,16 +1,18 @@
 // PersonalSettingsScreen.js
 
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button, Alert, Image } from 'react-native';
+import { View, Text, StyleSheet, TextInput, Alert, Image, TouchableOpacity} from 'react-native';
 
 function PersonalSettingsScreen() {
     const [name, setName] = useState('Max Müller');
     const [email, setEmail] = useState('maxmueller@gmail.com');
     const [address, setAddress] = useState('Muster Strasse 88');
+    const [phone, setPhone] = useState('+49 123 456 7890');
+    const [password, setPassword] = useState('********');
 
     const handleSave = () => {
         // This is where you would usually update the user's information in your database
-        console.log('Saved:', name, email, address);
+        console.log('Saved:', name, email, address, phone, password);
 
         // Notify the user that their settings have been saved
         Alert.alert('Success', 'Your settings have been saved.');
@@ -22,6 +24,7 @@ function PersonalSettingsScreen() {
                 style={styles.userImage}
                 source={require('../image/userImage.png')}
             />
+
             <Text style={styles.label}>Name:</Text>
             <TextInput style={styles.input} value={name} onChangeText={setName} />
 
@@ -31,7 +34,15 @@ function PersonalSettingsScreen() {
             <Text style={styles.label}>Address:</Text>
             <TextInput style={styles.input} value={address} onChangeText={setAddress} />
 
-            <Button title="Save" onPress={handleSave} />
+            <Text style={styles.label}>Phone:</Text>
+            <TextInput style={styles.input} value={phone} onChangeText={setPhone} />
+
+            <Text style={styles.label}>Password:</Text>
+            <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
+
+            <TouchableOpacity style={styles.button} onPress={handleSave}>
+                <Text style={styles.buttonText}>Save</Text>
+            </TouchableOpacity>
         </View>
     );
 }
@@ -43,7 +54,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         backgroundColor: '#F5F5F5',
         padding: 20,
-        paddingTop: 50
+        paddingTop: 50,
     },
     userImage: {
         width: 100,
@@ -64,6 +75,21 @@ const styles = StyleSheet.create({
         borderRadius: 5,
         marginBottom: 15,
         paddingLeft: 10,
+    },
+    button: {
+        // Added button style
+        width: '100%',
+        height: 40,
+        backgroundColor: '#841584',
+        borderRadius: 5,
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop: 20,
+    },
+    buttonText: {
+        // Added buttonText style
+        color: 'white',
+        fontSize: 18,
     },
 });
 
