@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {Button, View, Text, StyleSheet, TouchableHighlight} from 'react-native';
+import {Button, View, Text, StyleSheet, TouchableHighlight, ScrollView, Alert} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {CourseContext} from './CourseContext';
 
@@ -34,6 +34,7 @@ function FeedbackScreen({route, navigation}) {
             }));
 
             setSubmitted(false);
+            Alert.alert('Success', 'Vielen Dank für das Feedback!');
             navigation.goBack(); // Navigating back to CourseScreen
         }
     }, [submitted]);
@@ -45,55 +46,51 @@ function FeedbackScreen({route, navigation}) {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Provide Feedback</Text>
+            <ScrollView>
 
-            <Text style={styles.label}>Difficulty: {'\n'}{rating1}</Text>
+            <Text style={styles.label}>Die Lehrperson ist zur Vermittlung der Inhalte der LV geeignet: {'\n'}{rating1}</Text>
             <Slider
                 value={rating1}
                 onValueChange={setRating1}
                 minimumValue={1}
                 maximumValue={10}
                 step={1}
-                style={styles.slider}
             />
 
-            <Text style={styles.label}>Question 2: {'\n'}{rating2}</Text>
+            <Text style={styles.label}>Die Anzahl der ECTS-Punkte entspricht dem Aufwand der LV: {'\n'}{rating2}</Text>
             <Slider
                 value={rating2}
                 onValueChange={setRating2}
                 minimumValue={1}
                 maximumValue={10}
                 step={1}
-                style={styles.slider}
             />
 
-            <Text style={styles.label}>Question 3: {'\n'}{rating3}</Text>
+            <Text style={styles.label}>Ich empfinde die Inhalte als wichtig für kommende LVs: {'\n'}{rating3}</Text>
             <Slider
                 value={rating3}
                 onValueChange={setRating3}
                 minimumValue={1}
                 maximumValue={10}
                 step={1}
-                style={styles.slider}
             />
 
-            <Text style={styles.label}>Question 4: {'\n'}{rating4}</Text>
+            <Text style={styles.label}>Die Prüfungsanforderungen sind realistisch: {'\n'}{rating4}</Text>
             <Slider
                 value={rating4}
                 onValueChange={setRating4}
                 minimumValue={1}
                 maximumValue={10}
                 step={1}
-                style={styles.slider}
             />
 
-            <Text style={styles.label}>Question 5: {'\n'}{rating5}</Text>
+            <Text style={styles.label}>Ich würde die LV an meine Kommiliton*innen weiterempfehlen: {'\n'}{rating5}</Text>
             <Slider
                 value={rating5}
                 onValueChange={setRating5}
                 minimumValue={1}
                 maximumValue={10}
                 step={1}
-                style={styles.slider}
             />
 
             <View style={styles.buttonContainer}>
@@ -105,6 +102,7 @@ function FeedbackScreen({route, navigation}) {
                     <Text style={styles.buttonText}>Submit</Text>
                 </TouchableHighlight>
             </View>
+            </ScrollView>
         </View>
     );
 }
@@ -112,52 +110,42 @@ function FeedbackScreen({route, navigation}) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 20,
         backgroundColor: '#F5F5F5',
+        padding: 20,
     },
     title: {
-        fontSize: 25,
+        fontSize: 28,
         fontWeight: 'bold',
         marginBottom: 20,
+        textAlign: 'center',
+        color: '#FF6347',
+    },
+    ratingContainer: {
+        marginBottom: 30,
+    },
+    ratingText: {
+        fontSize: 48,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     label: {
         fontSize: 18,
-        marginBottom: 10,
-    },
-    slider: {
-        marginBottom: 10,
-    },
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'flex-end',
-        alignSelf: 'center',
+        color: '#2D3748',
+        textAlign: 'center',
     },
     button: {
-        flex: 1,
-        padding: 10,
-        marginBottom: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
-        marginRight: 8,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#3182CE',
         paddingVertical: 15,
-        paddingHorizontal: 20,
-        marginVertical: 5,
         borderRadius: 5,
-        borderColor: '#E0E0E0',
-        borderWidth: 1,
-//    shadowColor: '#000',
-//    shadowOffset: {
-//      width: 0,
-//      height: 1,
-//    },
-//    shadowOpacity: 0.2,
-//    shadowRadius: 2,
-//    elevation: 3,
+        marginTop: 30,
     },
     buttonText: {
         fontSize: 18,
+        color: '#fff',
+        textAlign: 'center',
     },
+
 });
+
 
 export default FeedbackScreen;

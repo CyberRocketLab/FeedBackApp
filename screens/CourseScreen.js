@@ -1,40 +1,42 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight, ScrollView } from 'react-native';
 import { CourseContext } from './CourseContext';
 
 function CourseScreen({ route, navigation }) {
-    // Receiving (course, description) data from route parametr
-    const { course, description } = route.params;
-    // Receving (scores) from CourseContext
-    const { scores } = useContext(CourseContext);
-    //Calculating average score
-    const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
+  // Receiving (course, description) data from route parametr
+  const { course, description } = route.params;
+  // Receving (scores) from CourseContext
+  const { scores } = useContext(CourseContext);
+  //Calculating average score
+  const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.courseTitle}>{course}</Text>
-      <View style={styles.descriptionContainer}>
-        <Text style={styles.description}>{description}</Text>
-      </View>
-      <Text style={styles.averageScore}>Average Difficulty: {averageScore}</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="#e0dcdc"
-          onPress={() => navigation.navigate('Feedback', { course })}
-        >
-          <Text style={styles.buttonText}>Feedback</Text>
-        </TouchableHighlight>
+      <View style={styles.container}>
+        <Text style={styles.courseTitle}>{course}</Text>
+        <View style={styles.descriptionContainer}>
+          <ScrollView>
+            <Text style={styles.description}>{description}</Text>
+          </ScrollView>
+        </View>
+        <Text style={styles.averageScore}>Schwierigkeitsgrad: {averageScore}</Text>
+        <View style={styles.buttonContainer}>
+          <TouchableHighlight
+              style={styles.button}
+              underlayColor="#e0dcdc"
+              onPress={() => navigation.navigate('Feedback', { course })}
+          >
+            <Text style={styles.buttonText}>Feedback</Text>
+          </TouchableHighlight>
 
-        <TouchableHighlight
-          style={styles.button}
-          underlayColor="#E0DCDC"
-          onPress={() => navigation.navigate('Forum')}
-        >
-          <Text style={styles.buttonText}>Forum</Text>
-        </TouchableHighlight>
+          <TouchableHighlight
+              style={styles.button}
+              underlayColor="#E0DCDC"
+              onPress={() => navigation.navigate('Forum')}
+          >
+            <Text style={styles.buttonText}>Forum</Text>
+          </TouchableHighlight>
+        </View>
       </View>
-    </View>
   );
 }
 
@@ -45,27 +47,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5F5F5',
   },
   courseTitle: {
-    fontSize: 25,
+    fontSize: 30,
     fontWeight: 'bold',
     paddingBottom: 15,
     paddingLeft: 10,
+    color: '#3B3B3B',
   },
   descriptionContainer: {
+    height: 350,
     backgroundColor: '#FFFFFF',
     borderRadius: 8,
     padding: 16,
-    marginBottom: 10,
+    marginBottom: 50,
     borderColor: '#E0E0E0',
     borderWidth: 1,
   },
   description: {
-    fontSize: 16,
+    fontSize: 18,
     lineHeight: 24,
   },
   averageScore: {
-    fontSize: 18,
+    fontSize: 20,
     marginBottom: 10,
     paddingLeft: 10,
+    fontWeight: '600',
+    color: '#FF6347',
   },
   buttonContainer: {
     flexDirection: 'row',
@@ -85,17 +91,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: '#E0E0E0',
     borderWidth: 1,
-//    shadowColor: '#000',
-//    shadowOffset: {
-//      width: 0,
-//      height: 1,
-//    },
-//    shadowOpacity: 0.2,
-//    shadowRadius: 2,
-//    elevation: 3,
+    elevation: 2,
   },
   buttonText: {
     fontSize: 18,
+    fontWeight: 'bold',
+    color: '#3B3B3B',
   },
 });
 
