@@ -3,6 +3,7 @@
     "name": "FeedBackApp",
     "slug": "FeedBackApp",
     "version": "1.0.0",
+    "privacy": "public",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -30,6 +31,12 @@
       "eas": {
         "projectId": "5d47b503-03d5-4d13-b714-a78d3a6d86c1"
       }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/5d47b503-03d5-4d13-b714-a78d3a6d86c1"
     }
   }
 }

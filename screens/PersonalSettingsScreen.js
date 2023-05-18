@@ -6,7 +6,9 @@ import { View, Text, StyleSheet } from 'react-native';
 function PersonalSettingsScreen() {
     return (
         <View style={styles.container}>
-            <Text style={styles.text}>This is the Personal Settings Screen</Text>
+            <Text style={styles.text}>Name: Max Müller</Text>
+            <Text style={styles.text}>Email: maxmueller@gmail.com</Text>
+            <Text style={styles.text}>Address: Muster Strasse 88</Text>
         </View>
         );
 }
