@@ -1,5 +1,5 @@
 import React, {useContext, useState, useEffect} from 'react';
-import {Button, View, Text, StyleSheet, TouchableHighlight, ScrollView} from 'react-native';
+import {Button, View, Text, StyleSheet, TouchableHighlight, ScrollView, Alert} from 'react-native';
 import Slider from '@react-native-community/slider';
 import {CourseContext} from './CourseContext';
 
@@ -34,6 +34,7 @@ function FeedbackScreen({route, navigation}) {
             }));
 
             setSubmitted(false);
+            Alert.alert('Success', 'Vielen Dank für das Feedback!');
             navigation.goBack(); // Navigating back to CourseScreen
         }
     }, [submitted]);
