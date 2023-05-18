@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { View, Text, StyleSheet, TouchableHighlight } from 'react-native';
+import { View, Text, StyleSheet, TouchableHighlight, ScrollView } from 'react-native';
 import { CourseContext } from './CourseContext';
 
 function CourseScreen({ route, navigation }) {
@@ -14,7 +14,9 @@ function CourseScreen({ route, navigation }) {
     <View style={styles.container}>
       <Text style={styles.courseTitle}>{course}</Text>
       <View style={styles.descriptionContainer}>
-        <Text style={styles.description}>{description}</Text>
+        <ScrollView>
+          <Text style={styles.description}>{description}</Text>
+        </ScrollView>
       </View>
       <Text style={styles.averageScore}>Average Difficulty: {averageScore}</Text>
       <View style={styles.buttonContainer}>
@@ -51,10 +53,11 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
   },
   descriptionContainer: {
+    height: 350,
     backgroundColor: '#FFFFFF',
     borderRadius: 8,
     padding: 16,
-    marginBottom: 10,
+    marginBottom: 50,
     borderColor: '#E0E0E0',
     borderWidth: 1,
   },
