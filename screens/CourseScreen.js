@@ -18,7 +18,7 @@ function CourseScreen({ route, navigation }) {
             <Text style={styles.description}>{description}</Text>
           </ScrollView>
         </View>
-        <Text style={styles.averageScore}>Average Difficulty: {averageScore}</Text>
+        <Text style={styles.averageScore}>Schwierigkeitsgrad: {averageScore}</Text>
         <View style={styles.buttonContainer}>
           <TouchableHighlight
               style={styles.button}
