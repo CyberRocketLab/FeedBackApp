@@ -1,11 +1,11 @@
-import React, { useState, useRef, useLayoutEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableHighlight, TextInput } from 'react-native';
+import React, {useState, useRef, useLayoutEffect} from 'react';
+import {View, Text, StyleSheet, ScrollView, TouchableHighlight, TextInput} from 'react-native';
 
 import Icon from 'react-native-vector-icons/Ionicons';
 
-function CoursesScreen({ route, navigation }) {
+function CoursesScreen({route, navigation}) {
     //Receiving Faculty from FacultiesScreen
-    const { faculty } = route.params;
+    const {faculty} = route.params;
 
     // Creating Faculties
     // Not making .map because somehow it was leading to errors
@@ -30,32 +30,32 @@ function CoursesScreen({ route, navigation }) {
 
     // Creating description for faculties
 
- const courseDescriptions = {
+    const courseDescriptions = {
         'Informatik + Recht (RGG)': 'Diese Veranstaltung richtet sich an Informatikstudierende ' +
             'und bietet einen Überblick über für diese relevante Rechtsfragen. ' +
             'Eingebunden werden Mitarbeiterinnen und Mitarbeiter des Instituts für Innovation ' +
             'und Digitalisierung im Recht. Einzelne Stunden werden daher auf Englisch gelehrt.',
-    'Theoretische Informatik (THI)': 'Einführung in die Methoden und Anwendungsgebiete von ausgewählten Teilen ' +
+        'Theoretische Informatik (THI)': 'Einführung in die Methoden und Anwendungsgebiete von ausgewählten Teilen ' +
             'der Theoretischen Informatik.\n' +
             'Ziele: Die Studierenden kennen die Grundlagen formaler Logik, die verschiedenen ' +
             'Arten von formalen Grammatiken und Automaten, die Zusammenhänge zwischen Grammatiken' +
             ' und Automaten (Chomsky-Hierarchie), und die Grundlagen der Berechenbarkeits- und Komplexitätstheorie. ' +
             'Ferner können sie Logik als Spezifikationssprache anwenden, und formale Sprachen mittels formaler Grammatiken und Automaten beschreiben.',
-    'Technische Grundlagen der Informatik (TGI)': 'Ziel des Moduls TGI ist das Kennenlernen und Verstehen der ' +
+        'Technische Grundlagen der Informatik (TGI)': 'Ziel des Moduls TGI ist das Kennenlernen und Verstehen der ' +
             'Architektur und der allgemeinen Funktionsweise von Computersystemen. ' +
             'Inhalte sind insbesondere technische Grundlagen wie Zahlendarstellung und Boolesche Algebra, ' +
             'Digitale Logik und Rechnerarchitekturen; daneben wird auch auf die historische Entwicklung der ' +
             'Informatik eingegangen. Ein Ausblick auf aktuelle Entwicklungen im Bereich Quantencomputing beschließt die Vorlesung.',
-    'Mathematische Grundlagen der Informatik (MG1)': 'Die Studierenden kennen und verstehen elementare Grundbegriffe und Grundkonzepte der ' +
+        'Mathematische Grundlagen der Informatik (MG1)': 'Die Studierenden kennen und verstehen elementare Grundbegriffe und Grundkonzepte der ' +
             '                                              mathematischen Grundlagen der Informatik aus den Bereichen Mengenlehre, Arithmetik und Algebra, lineare Algebra und analytische Geometrie, diskrete Mathematik, Graphentheorie.',
-    'Programmierung 1 (PR1)': 'Für die Lehrveranstaltung werden keinerlei Programmierkenntnisse vorausgesetzt. Folgende Kenntnisse sind im Lauf des Semesters zu erwerben:\n' +
+        'Programmierung 1 (PR1)': 'Für die Lehrveranstaltung werden keinerlei Programmierkenntnisse vorausgesetzt. Folgende Kenntnisse sind im Lauf des Semesters zu erwerben:\n' +
             'Grundkenntnisse über Algorithmen und Programmierung digitaler Rechner\n' +
             'Daten, Algorithmen, Programmiersprachen, Programme - eine begriffliche Einführung\n' +
             'Grundlagen der imperativen Programmierung\n' +
             'Grundlagen der objektorientierten Programmierung',
 
 
-    'Modellierung (MOD)': 'Dieser Modul vermittelt die für Informatiker/-innen notwendigen Grundlagen der Methoden der Modellierung statischer und dynamischer Aspekte.\n' +
+        'Modellierung (MOD)': 'Dieser Modul vermittelt die für Informatiker/-innen notwendigen Grundlagen der Methoden der Modellierung statischer und dynamischer Aspekte.\n' +
             'Im Rahmen der Lehrveranstaltung werden folgende Inhalte vermittelt:\n' +
             '- Ziele und Modus der Lehrveranstaltung\n' +
             'TEIL 1:\n' +
@@ -71,26 +71,26 @@ function CoursesScreen({ route, navigation }) {
             '- EPK\n' +
             '- Petri Netze\n' +
             '- Wert von Modellen/Simulation/Transformation z.B. RDF, SQL',
-    'Informatik + Gesellschaft (RGG)': 'Die Lehrveranstaltung „Informatik und Gesellschaft“ soll die Studierenden dazu anregen, sich mit ' +
+        'Informatik + Gesellschaft (RGG)': 'Die Lehrveranstaltung „Informatik und Gesellschaft“ soll die Studierenden dazu anregen, sich mit ' +
             'aktuellen und zukünftigen gesellschaftspolitischen Themen auseinanderzusetzen und deren Einflussfaktoren auf die ' +
             'Informatik einschätzen bzw. beurteilen zu können. Umgekehrt sollen die Einflüsse der Informatik auf die Gesellschaft ' +
             'bewusst wahrgenommen und nachvollzogen werden. Die Teilnehmer*innen sollen die Fähigkeit entwickeln, ' +
             'Situationen nach ethischen, politischen, sozialen, ökonomischen und Sicherheitsfaktoren zu analysieren und dementsprechend ' +
             'zu handeln. Hierzu lernen sie gesellschaftliche Voraussetzungen sowie potentielle Folgen der Informatik/IKT kennen, ' +
             'und können sie vor dem Hintergrund sozial- und geisteswissenschaflicher Theorien erklären.',
-    'Algorithmen und Datenstrukturen (ADS)': 'Die Studierenden erlangen Kenntnisse über Aufwandsabschätzungen, Komplexitätsmaße, grundlegende Datenstrukturen, ' +
+        'Algorithmen und Datenstrukturen (ADS)': 'Die Studierenden erlangen Kenntnisse über Aufwandsabschätzungen, Komplexitätsmaße, grundlegende Datenstrukturen, ' +
             'Such- und Sortierverfahren und grundlegende Graph- und Optimierungsalgorithmen. Sie werden dadurch befähigt Algorithmen und geeignete Datenstrukturen ' +
             'für gegebene Problemstellungen zu entwerfen oder auszuwählen und das Leistungsverhalten zu beurteilen.',
-    'Betriebssysteme (OS)': 'Ziel ist, die wichtigsten Konzepte und Ideen moderner Betriebssysteme zu verstehen und anwenden zu können.\n' +
+        'Betriebssysteme (OS)': 'Ziel ist, die wichtigsten Konzepte und Ideen moderner Betriebssysteme zu verstehen und anwenden zu können.\n' +
             'Anhand des Buchs wird erklärt, warum Betriebssysteme notwendig sind, um Computer verwenden zu können und welche Dienste sie Anwendungssoftware zur Verfügung stellen. Außerdem verstehen Studierende, ' +
             'welche Sicherheitsrisiken von Betriebssystemen adressiert werden müssen, weil viele Prozesse und verschiedene User gleichzeitig ein System mit geteilten Ressourcen verwenden.',
-    'Mathematische Grundlagen der Informatik 2 (MG2)': 'Die Studierenden kennen die Grundlagen der ein- und mehrdimensionalen Analysis und können diese Kenntnisse selbständig auf einfache Fragestellungen in Wirtschaft, Technik und ' +
+        'Mathematische Grundlagen der Informatik 2 (MG2)': 'Die Studierenden kennen die Grundlagen der ein- und mehrdimensionalen Analysis und können diese Kenntnisse selbständig auf einfache Fragestellungen in Wirtschaft, Technik und ' +
             'Naturwissenschaften anwenden. Sie sind in der Lage, geeignete Softwarewerkzeuge zur Modellierung, grafischen Darstellung und Lösung der Fragestellungen effizient einzusetzen. Studierende können dieses Wissen im ' +
             'Rahmen einer mündlichen Präsentation vermitteln.',
-    'Programmierung 2 (PR2)': 'Für die Lehrveranstaltung werden die Kenntnisse aus Programmierung 1 (PR1) als bekannt vorausgesetzt. Diese werden vertieft und erweitert. Schwerpunkte in C++ sind:\n' +
+        'Programmierung 2 (PR2)': 'Für die Lehrveranstaltung werden die Kenntnisse aus Programmierung 1 (PR1) als bekannt vorausgesetzt. Diese werden vertieft und erweitert. Schwerpunkte in C++ sind:\n' +
             'Vererbung, Templates, Exception Safety, STL und Move Semantik.\n' +
             'Außerdem wird eine zweite Programmiersprache (Java) eingeführt und die Gemeinsamkeiten und Unterschiede der beiden Sprachen werden erarbeitet.',
-    'Projekt-manage-ment (HCI)': 'Nach erfolgreicher Absolvierung der VU besitzen AbsolventInnen folgende fachliche Kompetenzen:\n' +
+        'Projekt-manage-ment (HCI)': 'Nach erfolgreicher Absolvierung der VU besitzen AbsolventInnen folgende fachliche Kompetenzen:\n' +
             '* Sie kennen die Basiskonzepte des klassischen und agilen Managements von Informatik-Projekten und können je nach Charakteristika einer gegebenen Situation passende Methoden auswählen und anpassen.\n' +
             '* Sie können einen Projektantrag und Projektauftrag (inkl. Projektplänen, Umwelt- und Risikoanalyse) für ein kleines Projekt im Team erstellen und die erarbeitete Projekt-Ergebnisse verständlich präsentieren.\n' +
             '* Sie kennen die Unterschiede zwischen klassischen und agilen Methoden.',
@@ -107,39 +107,39 @@ function CoursesScreen({ route, navigation }) {
             'einsetzen und in Programme einbinden, kennen die theoretischen Grundlagen der relationalen Datenbanken, verstehen die Probleme des ' +
             'Mehrbenutzerbetriebs und die grundsätzlichen Lösungsmöglichkeiten. Anhand von praktischen Aufgabenstellungen vertiefen die Studierenden ' +
             'die notwendigen Kenntnisse und Fähigkeiten Datenbanksysteme für die Erstellung von Anwendungssystemen einzusetzen.',
-    'Einführung in Numerical Computing (NUM)': 'Die Lehrveranstaltung wird primär physisch in den gelisteten Hörsälen abgehalten. Sie besteht aus einem Vorlesungsteil und einem Übungsteil. ' +
+        'Einführung in Numerical Computing (NUM)': 'Die Lehrveranstaltung wird primär physisch in den gelisteten Hörsälen abgehalten. Sie besteht aus einem Vorlesungsteil und einem Übungsteil. ' +
             'Der Vorlesungsteil wird für alle Gruppen gemeinsam in einem Hörsaal abgehalten und der Übungsteil wird für jede Gruppe separat abgehalten.',
-    'Einführende Statistik (EST)': 'Die Studierenden verfügen über Fähigkeiten empirische Sachverhalte mittels statistischer Basistechniken zu beschreiben und graphisch korrekt zu repräsentieren; ' +
+        'Einführende Statistik (EST)': 'Die Studierenden verfügen über Fähigkeiten empirische Sachverhalte mittels statistischer Basistechniken zu beschreiben und graphisch korrekt zu repräsentieren; ' +
             'sowie über ein prinzipielles Verständnis für die grundlegenden Konzepte der Wahrscheinlichkeitstheorie und der ' +
             'inferenzstatistischen Modellierung und Methodik.',
-    'Programmiersprachen und -konzepte (PLC)': 'Students understand and are able to assess the main concepts of different programming paradigms and languages, including object-oriented programming, ' +
+        'Programmiersprachen und -konzepte (PLC)': 'Students understand and are able to assess the main concepts of different programming paradigms and languages, including object-oriented programming, ' +
             'functional programming, logic programming and aspect-oriented programming. They can make informed decision on the use and applicability of different ' +
             'languages and concepts for application development. Students learn the main methods and tools for compiler construction, ' +
             'static program analysis and optimization, and runtime support. Students apply these concepts and methods in practical programming and development projects.',
-    'Mensch-Computer-Interaktion (HCI)': 'Mensch-Computer Interaktion, Human-centered design, usability engineering, barrierefreies Design, Grundlagen der kognitiven Psychologie, ' +
+        'Mensch-Computer-Interaktion (HCI)': 'Mensch-Computer Interaktion, Human-centered design, usability engineering, barrierefreies Design, Grundlagen der kognitiven Psychologie, ' +
             'Motivation und der Kommunikationspsychologie, App Programmierung.',
-    'Vertiefung 1': '',
-    'Vertiefung 2': '',
-    'Einführung in die mathematische Modellierung (MM)': 'Vermittlung grundlegender Methoden und Algorithmen zu verschiedenen Teilbereichen der Modellierung und Optimierung (beispielsweise Differentialgleichungen,' +
+        'Vertiefung 1': '',
+        'Vertiefung 2': '',
+        'Einführung in die mathematische Modellierung (MM)': 'Vermittlung grundlegender Methoden und Algorithmen zu verschiedenen Teilbereichen der Modellierung und Optimierung (beispielsweise Differentialgleichungen,' +
             ' Lineare und Nichtlineare Optimierungsverfahren, Metaheuristiken, Zufallszahlen, ' +
             'Markov-Ketten). Gute Kenntnisse der ein- und mehrdimensionalen Differential- ' +
             'und Integralrechnung (im Rahmen des Stoffes der Module MGI1 und MGI2) werden vorausgesetzt.',
-    'Software Engineering 1 (SE1)': 'Lernziele:\n' +
+        'Software Engineering 1 (SE1)': 'Lernziele:\n' +
             '‣ Überblick über grundlegende und weiterführende Konzepte (z.B. Anforderungsanalyse, sichere Softwareentwicklung, Softwarearchitekturen, etc.)\n' +
             '‣ Überblick über Herausforderungen und Lösungsmöglichkeiten in der Softwareentwicklung (z.B. Logging, Netzwerkkommunikation, Testing, etc.)\n' +
             '‣ Ausgewählte Themen können selbstständig theoretisch und/oder praktisch bearbeitet werden.',
 
-    'Netzwerktechnologien (NET)': 'Die Vorlesung bringt Ihnen Computer- und Kommunikationsnetze näher, mit besonderem Schwerpunkt auf dem Internet und den damit zusammenhängenden Technologien. ' +
+        'Netzwerktechnologien (NET)': 'Die Vorlesung bringt Ihnen Computer- und Kommunikationsnetze näher, mit besonderem Schwerpunkt auf dem Internet und den damit zusammenhängenden Technologien. ' +
             'Wir betrachten sowohl theoretische Grundlagen als auch praktische Anwendungen aller ' +
             'Ebenen des Schichtmodells. Der Vortrag orientiert sich an der angegebenen Literatur und ' +
             'greift als Diskussionsthemen auch aktuelle gesellschaftliche und politische Entwicklungen aus Netzsicht auf.',
-    'Vertiefung 3': '',
-    'Vertiefung 4': '',
-    'Vertiefung 5': '',
-    'Software Engineering 2 (SE2)': 'Aims:\n' +
+        'Vertiefung 3': '',
+        'Vertiefung 4': '',
+        'Vertiefung 5': '',
+        'Software Engineering 2 (SE2)': 'Aims:\n' +
             'The aims of the course are (1) to gain a deep understanding of basic principles for the systematic construction, design, and further development of high quality software systems,\n' +
             'and (2) to train practical proficiency in the application of these principles in modern development environments.',
-    'Informa-tions-sicherheit (IS)': 'Ziel der Lehrveranstaltung ist es, die Grundlagen von Informationssicherheit zu vermitteln. Der Vorlesungsteil basiert auf einem Lehrbuch. Im Übungsteil werden aktuelle Themen in Form von Lab Assignments zuhause selbständig bearbeitet.\n' +
+        'Informa-tions-sicherheit (IS)': 'Ziel der Lehrveranstaltung ist es, die Grundlagen von Informationssicherheit zu vermitteln. Der Vorlesungsteil basiert auf einem Lehrbuch. Im Übungsteil werden aktuelle Themen in Form von Lab Assignments zuhause selbständig bearbeitet.\n' +
             'Inhalte:\n' +
             '- Introduction\n' +
             '- Authentication, Access Control,\n' +
@@ -149,8 +149,8 @@ function CoursesScreen({ route, navigation }) {
             '- Network Security\n' +
             '- Database Security\n' +
             '- Privacy',
-    'Erweiterung': '',
-    'Softwarepraktikum mit Bachelorarbeit': ''
+        'Erweiterung': '',
+        'Softwarepraktikum mit Bachelorarbeit': ''
     };
 
     // Get the semesters for the selected faculty
@@ -165,8 +165,8 @@ function CoursesScreen({ route, navigation }) {
 
     // Filtering the Output of search Result
     const filteredCourses = Object.values(semesters)
-    .filter(courses => courses.length > 0) // Filter out semesters without courses
-    .flatMap(courses => courses.filter(course => course.toLowerCase().includes(searchTerm.toLowerCase())));
+        .filter(courses => courses.length > 0) // Filter out semesters without courses
+        .flatMap(courses => courses.filter(course => course.toLowerCase().includes(searchTerm.toLowerCase())));
 
     const toggleSearch = () => {
         setSearchVisible(!searchVisible);
@@ -183,12 +183,12 @@ function CoursesScreen({ route, navigation }) {
                     name={searchVisible ? 'close-outline' : 'search-outline'}
                     size={30}
                     color="black"
-                    style={{ marginRight: 16 }}
+                    style={{marginRight: 16}}
                     onPress={toggleSearch}
                 />
-                ),
+            ),
         });
-        }, [navigation, searchVisible]);
+    }, [navigation, searchVisible]);
 
     return (
         <ScrollView style={styles.container}>
@@ -200,11 +200,11 @@ function CoursesScreen({ route, navigation }) {
                     placeholder="Search Courses"
                     ref={inputRef}
                 />
-                )}
+            )}
             {Object.entries(semesters).map(([semester, courses]) => {
                 const filteredCoursesByTerm = courses.filter(course =>
-          course.toLowerCase().includes(searchTerm.toLowerCase())
-          );
+                    course.toLowerCase().includes(searchTerm.toLowerCase())
+                );
                 if (filteredCoursesByTerm.length === 0) {
                     return null; // Skip rendering empty semesters
                 }
@@ -220,15 +220,15 @@ function CoursesScreen({ route, navigation }) {
                                     course,
                                     description: courseDescriptions[course]
                                 })}
-                                >
+                            >
                                 <Text style={styles.courseTitle}>{course}</Text>
                             </TouchableHighlight>
-                            ))}
+                        ))}
                     </View>
-                    );
+                );
             })}
         </ScrollView>
-        );
+    );
 }
 
 const styles = StyleSheet.create({
