@@ -55,6 +55,7 @@ function ForumScreen() {
               style={styles.messageContainer}
               onLongPress={() => deleteMessage(index)}
             >
+              <View style={styles.avatar} />
               <View style={styles.messageContent}>
                 <Text style={styles.messageText}>{message}</Text>
               </View>
@@ -67,7 +68,10 @@ function ForumScreen() {
             onChangeText={setInput}
             placeholder="Type your message"
             style={styles.input}
+            multiline
+            numberOfLines={4}
           />
+
           <TouchableOpacity onPress={sendMessage}>
             <MaterialIcons name="send" size={24} color="black" />
           </TouchableOpacity>
@@ -89,7 +93,16 @@ const styles = StyleSheet.create({
     padding: 20,
   },
   messageContainer: {
+    flexDirection: 'row',
     marginBottom: 16,
+    alignItems: 'center',
+  },
+  avatar: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: '#AAA',
+    marginRight: 16,
   },
   messageContent: {
     backgroundColor: '#FFFFFF',
@@ -97,15 +110,17 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderColor: '#E0E0E0',
     borderWidth: 1,
+    flex: 1,
   },
   messageText: {
     fontSize: 16,
   },
-  inputContainer: {
+  inputContainer:{
     flexDirection: 'row',
     alignItems: 'center',
     paddingHorizontal: 20,
-    paddingBottom: 20,
+    paddingBottom: 30,
+//    textAlign: "center",
   },
   input: {
     flex: 1,
@@ -116,6 +131,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     marginRight: 16,
     backgroundColor: '#FFFFFF',
+    textAlign: "left",
+    textAlignVertical: "center",
+    paddingTop: 10,
   },
 });
 
