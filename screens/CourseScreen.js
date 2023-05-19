@@ -52,10 +52,11 @@ function CourseScreen({route, navigation}) {
                     <TouchableHighlight
                         style={styles.button}
                         underlayColor="#E0DCDC"
-                        onPress={() => navigation.navigate('Forum')}
-                    >
+                        onPress={() => navigation.navigate('Forum', { course: course })}
+                        >
                         <Text style={styles.buttonText}>Forum</Text>
                     </TouchableHighlight>
+                    
                 </View>
             </View>
 

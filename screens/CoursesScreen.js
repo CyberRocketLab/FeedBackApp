@@ -30,7 +30,7 @@ function CoursesScreen({ route, navigation }) {
 
     // Creating description for faculties
 
-    const courseDescriptions = {
+ const courseDescriptions = {
         'Informatik + Recht (RGG)': 'Diese Veranstaltung richtet sich an Informatikstudierende ' +
             'und bietet einen Überblick über für diese relevante Rechtsfragen. ' +
             'Eingebunden werden Mitarbeiterinnen und Mitarbeiter des Instituts für Innovation ' +
