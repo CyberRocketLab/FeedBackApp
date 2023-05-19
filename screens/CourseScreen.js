@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight, ScrollView} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {View, Text, StyleSheet, TouchableHighlight, ScrollView, Alert} from 'react-native';
 import {CourseContext} from './CourseContext';
 
 function CourseScreen({route, navigation}) {
@@ -9,6 +9,26 @@ function CourseScreen({route, navigation}) {
     const {scores} = useContext(CourseContext);
     //Calculating average score
     const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
+
+    const [isPressed, setIsPressed] = useState(false);
+
+    const handleUmfragePress = () => {
+        if (!isPressed) {
+            setIsPressed(true); // Set isPressed to true
+
+            // Navigate to the Umfrage screen
+            navigation.navigate('Umfrage', {course});
+
+            // Set isPressed back to false after 10 seconds
+            setTimeout(() => {
+                setIsPressed(false);
+            }, 10000);
+
+        } else {
+            Alert.alert('Ups', 'Sie können die Einheit der Vorlesung nur einmal bewerten. (10 seconds)');
+        }
+    };
+
 
     return (
         <View style={styles.container}>
@@ -24,7 +44,7 @@ function CourseScreen({route, navigation}) {
                     <TouchableHighlight
                         style={styles.button}
                         underlayColor="#e0dcdc"
-                        onPress={() => navigation.navigate('Umfrage', {course})}
+                        onPress={handleUmfragePress}
                     >
                         <Text style={styles.buttonText}>Umfrage</Text>
                     </TouchableHighlight>
