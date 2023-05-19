@@ -57,7 +57,7 @@ function App() {
                             }
                             return <Ionicons name={iconName} size={size} color={color}/>;
                             },
-                        tabBarActiveTintColor: 'tomato',
+                        tabBarActiveTintColor: '#3182CE',
                         tabBarShowLabel: false,
                         tabBarInactiveTintColor: 'gray',
                         tabBarStyle: [

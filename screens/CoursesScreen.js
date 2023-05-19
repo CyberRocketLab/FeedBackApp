@@ -257,6 +257,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         paddingBottom: 10,
         paddingLeft: 10,
+        color: '#3182CE'
     },
     courseCard: {
         backgroundColor: '#FFFFFF',

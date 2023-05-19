@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         paddingLeft: 10,
         fontWeight: '600',
-        color: '#FF6347',
+        color: '#3182CE',
     },
     buttonContainer: {
         flexDirection: 'row',
