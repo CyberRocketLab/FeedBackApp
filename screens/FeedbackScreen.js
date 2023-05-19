@@ -34,7 +34,7 @@ function FeedbackScreen({route, navigation}) {
             }));
 
             setSubmitted(false);
-            Alert.alert('Success', 'Vielen Dank für das Feedback!');
+            Alert.alert('Erfolg', 'Vielen Dank für das Feedback!');
             navigation.goBack(); // Navigating back to CourseScreen
         }
     }, [submitted]);
@@ -45,7 +45,7 @@ function FeedbackScreen({route, navigation}) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Provide Feedback</Text>
+            <Text style={styles.title}>Bewertung</Text>
             <ScrollView>
 
             <Text style={styles.label}>Die Lehrperson ist zur Vermittlung der Inhalte der LV geeignet: {'\n'}{rating1}</Text>
@@ -99,7 +99,7 @@ function FeedbackScreen({route, navigation}) {
                     underlayColor="#E0DCDC"
                     onPress={submit}
                 >
-                    <Text style={styles.buttonText}>Submit</Text>
+                    <Text style={styles.buttonText}>Abgeben</Text>
                 </TouchableHighlight>
             </View>
             </ScrollView>

@@ -9,7 +9,7 @@ function FacultiesScreen({ navigation }) {
     <TouchableHighlight
       style={styles.item}
       underlayColor="#E0DCDC"
-      onPress={() => navigation.navigate('Courses', { faculty: item })}
+      onPress={() => navigation.navigate('Lehrveranstaltungen', { faculty: item })}
     >
       <Text style={styles.title}>{item}</Text>
     </TouchableHighlight>

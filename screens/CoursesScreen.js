@@ -205,7 +205,7 @@ function CoursesScreen({route, navigation}) {
                             style={styles.courseCard}
 
                             underlayColor="#e0dcdc" // Set the background color when the card is pressed
-                            onPress={() => navigation.navigate('Course', {
+                            onPress={() => navigation.navigate('Lehrveranstaltung', {
                                 course,
                                 description: courseDescriptions[course]
                             })}
