@@ -241,17 +241,6 @@ const styles = StyleSheet.create({
         paddingHorizontal: 10,
         marginVertical: 8,
         marginHorizontal: 8,
-        //    borderRadius: 5,
-        //    borderColor: '#E0E0E0',
-        //    borderWidth: 1,
-        //    shadowColor: '#000',
-        //    shadowOffset: {
-        //      width: 0,
-        //      height: 1,
-        //    },
-        //    shadowOpacity: 0.2,
-        //    shadowRadius: 2,
-        //    elevation: 3,
     },
     semesterTitle: {
         fontSize: 30,
