@@ -69,8 +69,6 @@ const styles = StyleSheet.create({
         flex: 1,
         padding: 20,
         backgroundColor: '#F5F5F5',
-//        justifyContent: 'space-between',
-
     },
     courseTitle: {
         fontSize: 30,
@@ -105,7 +103,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%'
-//    marginBottom: 0,
+
     },
     button: {
         flex: 1,
