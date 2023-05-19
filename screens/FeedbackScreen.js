@@ -107,15 +107,15 @@ function FeedbackScreen({route, navigation}) {
                         step={1}
                     />
                 </View>
-            <View style={styles.buttonContainer}>
-                <TouchableHighlight
-                    style={styles.button}
-                    underlayColor="#E0DCDC"
-                    onPress={submit}
-                >
-                    <Text style={styles.buttonText}>Abgeben</Text>
-                </TouchableHighlight>
-            </View>
+                <View style={styles.buttonContainer}>
+                    <TouchableHighlight
+                        style={styles.button}
+                        underlayColor="#E0DCDC"
+                        onPress={submit}
+                    >
+                        <Text style={styles.buttonText}>Abgeben</Text>
+                    </TouchableHighlight>
+                </View>
             </ScrollView>
         </View>
     );

@@ -52,11 +52,11 @@ function CourseScreen({route, navigation}) {
                     <TouchableHighlight
                         style={styles.button}
                         underlayColor="#E0DCDC"
-                        onPress={() => navigation.navigate('Forum', { course: course })}
-                        >
+                        onPress={() => navigation.navigate('Forum', {course: course})}
+                    >
                         <Text style={styles.buttonText}>Forum</Text>
                     </TouchableHighlight>
-                    
+
                 </View>
             </View>
 
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
         paddingBottom: 35,
         paddingLeft: 10,
         color: '#3B3B3B',
-      textAlign: "center",
+        textAlign: "center",
     },
     descriptionContainer: {
         height: 350,
