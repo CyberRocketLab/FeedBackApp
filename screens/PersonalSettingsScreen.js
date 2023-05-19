@@ -37,8 +37,6 @@ function PersonalSettingsScreen() {
             <Text style={styles.label}>Passwort:</Text>
             <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
 
-                <Text style={styles.label}>Password:</Text>
-                <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
             </ScrollView>
             <TouchableOpacity style={styles.button} onPress={handleSave}>
                 <Text style={styles.buttonText}>Speichern</Text>
