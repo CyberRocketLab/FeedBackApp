@@ -28,18 +28,20 @@ function PersonalSettingsScreen() {
 
                 <Text style={styles.label}>Email:</Text>
                 <TextInput style={styles.input} value={email} onChangeText={setEmail} />
+            <Text style={styles.label}>Adresse:</Text>
+            <TextInput style={styles.input} value={address} onChangeText={setAddress} />
 
-                <Text style={styles.label}>Address:</Text>
-                <TextInput style={styles.input} value={address} onChangeText={setAddress} />
+            <Text style={styles.label}>Telefonnummer:</Text>
+            <TextInput style={styles.input} value={phone} onChangeText={setPhone} />
 
-                <Text style={styles.label}>Phone:</Text>
-                <TextInput style={styles.input} value={phone} onChangeText={setPhone} />
+            <Text style={styles.label}>Passwort:</Text>
+            <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
 
                 <Text style={styles.label}>Password:</Text>
                 <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
             </ScrollView>
             <TouchableOpacity style={styles.button} onPress={handleSave}>
-                <Text style={styles.buttonText}>Save</Text>
+                <Text style={styles.buttonText}>Speichern</Text>
             </TouchableOpacity>
         </View>
     );

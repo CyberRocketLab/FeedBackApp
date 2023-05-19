@@ -34,7 +34,7 @@ function FeedbackScreen({route, navigation}) {
             }));
 
             setSubmitted(false);
-            Alert.alert('Success', 'Vielen Dank für das Feedback!');
+            Alert.alert('Erfolg', 'Vielen Dank für das Feedback!');
             navigation.goBack(); // Navigating back to CourseScreen
         }
     }, [submitted]);
@@ -115,7 +115,7 @@ function FeedbackScreen({route, navigation}) {
                     underlayColor="#E0DCDC"
                     onPress={submit}
                 >
-                    <Text style={styles.buttonText}>Submit</Text>
+                    <Text style={styles.buttonText}>Abgeben</Text>
                 </TouchableHighlight>
             </View>
         </View>

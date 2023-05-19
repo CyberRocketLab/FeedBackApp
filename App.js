@@ -20,9 +20,9 @@ function HomeStack() {
     // ...
     return (
         <Stack.Navigator initialRouteName="Faculties">
-            <Stack.Screen name="Faculties" component={FacultiesScreen}/>
-            <Stack.Screen name="Courses" component={CoursesScreen}/>
-            <Stack.Screen name="Course" component={CourseScreen}/>
+            <Stack.Screen name="Fakultäten" component={FacultiesScreen}/>
+            <Stack.Screen name="Lehrveranstaltungen" component={CoursesScreen}/>
+            <Stack.Screen name="Lehrveranstaltung" component={CourseScreen}/>
             <Stack.Screen name="Feedback" component={FeedbackScreen}/>
             <Stack.Screen name="Forum" component={ForumScreen}/>
         </Stack.Navigator>
@@ -30,14 +30,12 @@ function HomeStack() {
 }
 
 function SettingsStack() {
-    // ...
     return (
         <Stack.Navigator initialRouteName="Personal Settings"
                          screenOptions={{
                              headerShown: false,  // This line hides the header
                          }}>
             <Stack.Screen name="Personal Settings" component={PersonalSettingsScreen}/>
-            {/* Add more screens here if there are other screens under Personal Settings */}
         </Stack.Navigator>
     );
 }
@@ -53,13 +51,14 @@ function App() {
                         tabBarIcon: ({focused, color, size}) => {
                             let iconName;
                             if (route.name === 'Home') {
-                                iconName = focused ? 'home' : 'home-outline';
+                                iconName = focused ? 'school' : 'school-outline';
                             } else if (route.name === 'Settings') {
                                 iconName = focused ? 'settings' : 'settings-outline';
                             }
                             return <Ionicons name={iconName} size={size} color={color}/>;
                             },
                         tabBarActiveTintColor: 'tomato',
+                        tabBarShowLabel: false,
                         tabBarInactiveTintColor: 'gray',
                         tabBarStyle: [
                             { display: "flex" },
@@ -70,9 +69,12 @@ function App() {
                     <Tab.Screen
                         name="Home"
                         component={HomeStack}
-                        options={{title: 'Faculties', headerShown: false}}
+                        options={{title: 'Home', headerShown: false}}
                     />
-                    <Tab.Screen name="Settings" component={SettingsStack}/>
+                    <Tab.Screen
+                        name="Settings"
+                        component={SettingsStack}
+                        options={{ title: 'Persönliche Daten' }}/>
                 </Tab.Navigator>
             </NavigationContainer>
         </CourseContext.Provider>
