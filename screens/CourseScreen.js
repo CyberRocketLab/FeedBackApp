@@ -55,16 +55,17 @@ const styles = StyleSheet.create({
     courseTitle: {
         fontSize: 30,
         fontWeight: 'bold',
-        paddingBottom: 25,
+        paddingBottom: 35,
         paddingLeft: 10,
         color: '#3B3B3B',
+      textAlign: "center",
     },
     descriptionContainer: {
         height: 350,
         backgroundColor: '#FFFFFF',
         borderRadius: 8,
         padding: 16,
-        marginTop: 25,
+        marginTop: 0,
         marginBottom: 50,
         borderColor: '#E0E0E0',
         borderWidth: 1,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
         borderColor: '#E0E0E0',
         borderWidth: 1,
         elevation: 2,
-        width: '100',
+        width: '100%',
 
 
     },

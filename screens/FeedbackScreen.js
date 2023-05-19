@@ -47,52 +47,67 @@ function FeedbackScreen({route, navigation}) {
         <View style={styles.container}>
             <Text style={styles.title}>Provide Feedback</Text>
             <ScrollView style={styles.scrollView}>
+                <View style={styles.card}>
+                    <Text style={styles.label}>Die Lehrperson ist zur Vermittlung der Inhalte der LV
+                        geeignet:</Text>
+                    <Text style={styles.ratingNumber}>{rating1}</Text>
+                    <Slider
 
-            <Text style={styles.label}>Die Lehrperson ist zur Vermittlung der Inhalte der LV geeignet: {'\n'}{rating1}</Text>
-            <Slider
-                value={rating1}
-                onValueChange={setRating1}
-                minimumValue={1}
-                maximumValue={10}
-                step={1}
-            />
+                        value={rating1}
+                        onValueChange={setRating1}
+                        minimumValue={1}
+                        maximumValue={10}
+                        step={1}
+                    />
 
-            <Text style={styles.label}>Die Anzahl der ECTS-Punkte entspricht dem Aufwand der LV: {'\n'}{rating2}</Text>
-            <Slider
-                value={rating2}
-                onValueChange={setRating2}
-                minimumValue={1}
-                maximumValue={10}
-                step={1}
-            />
-
-            <Text style={styles.label}>Ich empfinde die Inhalte als wichtig für kommende LVs: {'\n'}{rating3}</Text>
-            <Slider
-                value={rating3}
-                onValueChange={setRating3}
-                minimumValue={1}
-                maximumValue={10}
-                step={1}
-            />
-
-            <Text style={styles.label}>Die Prüfungsanforderungen sind realistisch: {'\n'}{rating4}</Text>
-            <Slider
-                value={rating4}
-                onValueChange={setRating4}
-                minimumValue={1}
-                maximumValue={10}
-                step={1}
-            />
-
-            <Text style={styles.label}>Ich würde die LV an meine Kommiliton*innen weiterempfehlen: {'\n'}{rating5}</Text>
-            <Slider
-                value={rating5}
-                onValueChange={setRating5}
-                minimumValue={1}
-                maximumValue={10}
-                step={1}
-            />
-
+                </View>
+                <View style={styles.card}>
+                    <Text style={styles.label}>Die Anzahl der ECTS-Punkte entspricht dem Aufwand der
+                        LV:</Text>
+                    <Text style={styles.ratingNumber}>{rating2}</Text>
+                    <Slider
+                        value={rating2}
+                        onValueChange={setRating2}
+                        minimumValue={1}
+                        maximumValue={10}
+                        step={1}
+                    />
+                </View>
+                <View style={styles.card}>
+                    <Text style={styles.label}>Ich empfinde die Inhalte als wichtig für kommende
+                        LVs: </Text>
+                    <Text style={styles.ratingNumber}>{rating3}</Text>
+                    <Slider
+                        value={rating3}
+                        onValueChange={setRating3}
+                        minimumValue={1}
+                        maximumValue={10}
+                        step={1}
+                    />
+                </View>
+                <View style={styles.card}>
+                    <Text style={styles.label}>Die Prüfungsanforderungen sind realistisch: </Text>
+                    <Text style={styles.ratingNumber}>{rating4}</Text>
+                    <Slider
+                        value={rating4}
+                        onValueChange={setRating4}
+                        minimumValue={1}
+                        maximumValue={10}
+                        step={1}
+                    />
+                </View>
+                <View style={styles.card}>
+                    <Text style={styles.label}>Ich würde die LV an meine Kommiliton*innen
+                        weiterempfehlen:</Text>
+                    <Text style={styles.ratingNumber}>{rating5}</Text>
+                    <Slider
+                        value={rating5}
+                        onValueChange={setRating5}
+                        minimumValue={1}
+                        maximumValue={10}
+                        step={1}
+                    />
+                </View>
             </ScrollView>
             <View style={styles.buttonContainer}>
                 <TouchableHighlight
@@ -111,17 +126,28 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#F5F5F5',
-        padding: 20,
+        width: '100%',
     },
     title: {
         fontSize: 28,
-        fontWeight: 'bold',
-        marginBottom: 20,
+        fontWeight:
+            'bold',
+        marginVertical: 10,
         textAlign: 'center',
         color: '#FF6347',
     },
     ratingContainer: {
         marginBottom: 30,
+    },
+    card: {
+        borderRadius: 5,
+        borderColor: '#E0E0E0',
+        borderWidth: 1,
+        backgroundColor: '#FFFFFF',
+        padding: 10,
+        paddingTop: 15,
+        marginBottom: 15,
+        marginHorizontal: 12,
     },
     ratingText: {
         fontSize: 48,
@@ -137,15 +163,25 @@ const styles = StyleSheet.create({
         backgroundColor: '#3182CE',
         paddingVertical: 15,
         borderRadius: 5,
-        marginTop: 10,
-        marginBottom: 0,
+        marginVertical: 5,
+        marginHorizontal: 12,
+
     },
     buttonText: {
         fontSize: 18,
         color: '#fff',
         textAlign: 'center',
     },
-   
+    scrollView: {
+        flex: 1,
+    },
+    ratingNumber: {
+        fontSize: 18,
+        fontWeight: 'bold',
+        textAlign: "center",
+        marginVertical: 5,
+    },
+
 });
 
 
