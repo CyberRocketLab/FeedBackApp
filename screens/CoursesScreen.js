@@ -94,7 +94,14 @@ function CoursesScreen({route, navigation}) {
             '* Sie kennen die Basiskonzepte des klassischen und agilen Managements von Informatik-Projekten und können je nach Charakteristika einer gegebenen Situation passende Methoden auswählen und anpassen.\n' +
             '* Sie können einen Projektantrag und Projektauftrag (inkl. Projektplänen, Umwelt- und Risikoanalyse) für ein kleines Projekt im Team erstellen und die erarbeitete Projekt-Ergebnisse verständlich präsentieren.\n' +
             '* Sie kennen die Unterschiede zwischen klassischen und agilen Methoden.',
-        'Grundl. d. intellig. Systeme (IDS)': '',
+        'Grundl. d. intellig. Systeme (IDS)': 'Die Lehrveranstaltung wird primär physisch in den gelisteten Hörsälen abgehalten. Sie besteht aus einem Vorlesungsteil und einem Übungsteil. Der Vorlesungsteil wird für alle Gruppen gemeinsam in einem Hörsaal abgehalten und der Übungsteil wird für jede Gruppe separat abgehalten.\n' +
+            'Aufgrund von Covid-19 Entwicklungen oder Anpassungen der staatlichen oder universitären Regelungen kann es zu Änderungen in der Abhaltung der Lehrveranstaltung kommen und auf einen online oder hybriden Betrieb umgestellt werden.\n' +
+            'Einführung in die Grundlagen der intelligenten Systeme:\n' +
+            '- Grundbegriffe und die historische Entwicklung der künstlichen Intelligenz,\n' +
+            '- Aussagen- und Prädikatenlogik,\n' +
+            '- Prolog,\n' +
+            '- Suchverfahren,\n' +
+            '- Grundlagen künstlicher neuronaler Netze',
         'Datenbanksysteme (DBS)': 'AbsolventInnen der Lehrveranstaltung verstehen die grundlegenden Funktionsweisen von Datenbanksystemen, ' +
             'können Datenbanken entwerfen und abfragen, können Datenbanksysteme für die Erstellung von Anwendungssystemen ' +
             'einsetzen und in Programme einbinden, kennen die theoretischen Grundlagen der relationalen Datenbanken, verstehen die Probleme des ' +

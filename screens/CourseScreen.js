@@ -24,9 +24,9 @@ function CourseScreen({route, navigation}) {
                     <TouchableHighlight
                         style={styles.button}
                         underlayColor="#e0dcdc"
-                        onPress={() => navigation.navigate('Feedback', {course})}
+                        onPress={() => navigation.navigate('Umfrage', {course})}
                     >
-                        <Text style={styles.buttonText}>Feedback</Text>
+                        <Text style={styles.buttonText}>Umfrage</Text>
                     </TouchableHighlight>
 
                     <TouchableHighlight

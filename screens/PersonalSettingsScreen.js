@@ -13,7 +13,7 @@ function PersonalSettingsScreen() {
         console.log('Saved:', name, email, address, phone, password);
 
         // Notify the user that their settings have been saved
-        Alert.alert('Success', 'Your settings have been saved.');
+        Alert.alert('Erfolg', 'Deine Änderungen wurden gespeichert.');
     };
 
     return (
