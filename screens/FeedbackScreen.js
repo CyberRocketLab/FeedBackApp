@@ -108,7 +108,6 @@ function FeedbackScreen({route, navigation}) {
                         step={1}
                     />
                 </View>
-            </ScrollView>
             <View style={styles.buttonContainer}>
                 <TouchableHighlight
                     style={styles.button}
@@ -118,6 +117,7 @@ function FeedbackScreen({route, navigation}) {
                     <Text style={styles.buttonText}>Abgeben</Text>
                 </TouchableHighlight>
             </View>
+            </ScrollView>
         </View>
     );
 }
