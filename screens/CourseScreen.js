@@ -1,5 +1,5 @@
-import React, {useContext} from 'react';
-import {View, Text, StyleSheet, TouchableHighlight, ScrollView} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {View, Text, StyleSheet, TouchableHighlight, ScrollView, Alert} from 'react-native';
 import {CourseContext} from './CourseContext';
 
 function CourseScreen({route, navigation}) {
@@ -9,6 +9,26 @@ function CourseScreen({route, navigation}) {
     const {scores} = useContext(CourseContext);
     //Calculating average score
     const averageScore = (scores[course]?.averageScore || 0).toFixed(2);
+
+    const [isPressed, setIsPressed] = useState(false);
+
+    const handleUmfragePress = () => {
+        if (!isPressed) {
+            setIsPressed(true); // Set isPressed to true
+
+            // Navigate to the Umfrage screen
+            navigation.navigate('Umfrage', {course});
+
+            // Set isPressed back to false after 10 seconds
+            setTimeout(() => {
+                setIsPressed(false);
+            }, 10000);
+
+        } else {
+            Alert.alert('Ups', 'Sie können die Einheit der Vorlesung nur einmal bewerten. (10 seconds)');
+        }
+    };
+
 
     return (
         <View style={styles.container}>
@@ -24,9 +44,9 @@ function CourseScreen({route, navigation}) {
                     <TouchableHighlight
                         style={styles.button}
                         underlayColor="#e0dcdc"
-                        onPress={() => navigation.navigate('Feedback', {course})}
+                        onPress={handleUmfragePress}
                     >
-                        <Text style={styles.buttonText}>Feedback</Text>
+                        <Text style={styles.buttonText}>Umfrage</Text>
                     </TouchableHighlight>
 
                     <TouchableHighlight
@@ -75,9 +95,9 @@ const styles = StyleSheet.create({
     averageScore: {
         fontSize: 20,
         marginBottom: 10,
-        paddingLeft: 1,
-        fontWeight: 'bold',
-        color: '#FF6347',
+        paddingLeft: 10,
+        fontWeight: '600',
+        color: '#3182CE',
     },
     buttonContainer: {
         flexDirection: 'row',

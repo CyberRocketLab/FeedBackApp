@@ -45,7 +45,6 @@ function FeedbackScreen({route, navigation}) {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Provide Feedback</Text>
             <ScrollView style={styles.scrollView}>
                 <View style={styles.card}>
                     <Text style={styles.label}>Die Lehrperson ist zur Vermittlung der Inhalte der LV
@@ -108,7 +107,6 @@ function FeedbackScreen({route, navigation}) {
                         step={1}
                     />
                 </View>
-            </ScrollView>
             <View style={styles.buttonContainer}>
                 <TouchableHighlight
                     style={styles.button}
@@ -118,6 +116,7 @@ function FeedbackScreen({route, navigation}) {
                     <Text style={styles.buttonText}>Abgeben</Text>
                 </TouchableHighlight>
             </View>
+            </ScrollView>
         </View>
     );
 }
@@ -134,7 +133,7 @@ const styles = StyleSheet.create({
             'bold',
         marginVertical: 10,
         textAlign: 'center',
-        color: '#FF6347',
+        color: '#3182CE',
     },
     ratingContainer: {
         marginBottom: 30,
@@ -173,6 +172,7 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
     scrollView: {
+        marginTop: 10,
         flex: 1,
     },
     ratingNumber: {
