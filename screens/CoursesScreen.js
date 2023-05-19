@@ -254,7 +254,7 @@ const styles = StyleSheet.create({
         //    elevation: 3,
     },
     semesterTitle: {
-        fontSize: 24,
+        fontSize: 30,
         paddingBottom: 10,
         paddingLeft: 10,
     },
@@ -271,6 +271,10 @@ const styles = StyleSheet.create({
             width: 0,
             height: 1,
         },
-    }});
+    },
+    courseTitle: {
+        fontSize: 18,
+    }
+});
 
 export default CoursesScreen;

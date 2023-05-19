@@ -1,7 +1,5 @@
-// PersonalSettingsScreen.js
-
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Alert, Image, TouchableOpacity} from 'react-native';
+import { View, Text, StyleSheet, TextInput, Alert, Image, TouchableOpacity, ScrollView } from 'react-native';
 
 function PersonalSettingsScreen() {
     const [name, setName] = useState('Max Müller');
@@ -24,13 +22,12 @@ function PersonalSettingsScreen() {
                 style={styles.userImage}
                 source={require('../image/userImage.png')}
             />
+            <ScrollView style={styles.scrollView}>
+                <Text style={styles.label}>Name:</Text>
+                <TextInput style={styles.input} value={name} onChangeText={setName} />
 
-            <Text style={styles.label}>Name:</Text>
-            <TextInput style={styles.input} value={name} onChangeText={setName} />
-
-            <Text style={styles.label}>Email:</Text>
-            <TextInput style={styles.input} value={email} onChangeText={setEmail} />
-
+                <Text style={styles.label}>Email:</Text>
+                <TextInput style={styles.input} value={email} onChangeText={setEmail} />
             <Text style={styles.label}>Adresse:</Text>
             <TextInput style={styles.input} value={address} onChangeText={setAddress} />
 
@@ -40,6 +37,9 @@ function PersonalSettingsScreen() {
             <Text style={styles.label}>Passwort:</Text>
             <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
 
+                <Text style={styles.label}>Password:</Text>
+                <TextInput style={styles.input} value={password} onChangeText={setPassword} secureTextEntry />
+            </ScrollView>
             <TouchableOpacity style={styles.button} onPress={handleSave}>
                 <Text style={styles.buttonText}>Speichern</Text>
             </TouchableOpacity>
@@ -50,17 +50,21 @@ function PersonalSettingsScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'flex-start',
-        alignItems: 'center',
+        justifyContent: 'space-between',
+        alignItems: 'stretch',
         backgroundColor: '#F5F5F5',
         padding: 20,
         paddingTop: 50,
     },
     userImage: {
+        alignSelf: 'center',
         width: 100,
         height: 100,
         borderRadius: 50,
         marginBottom: 20,
+    },
+    scrollView: {
+        flex: 1,
     },
     label: {
         fontSize: 18,
@@ -77,17 +81,16 @@ const styles = StyleSheet.create({
         paddingLeft: 10,
     },
     button: {
-        // Added button style
+        alignSelf: 'center',
         width: '100%',
-        height: 40,
-        backgroundColor: '#841584',
+        height: 52,
+        backgroundColor: '#3182CE',
         borderRadius: 5,
         justifyContent: 'center',
         alignItems: 'center',
         marginTop: 20,
     },
     buttonText: {
-        // Added buttonText style
         color: 'white',
         fontSize: 18,
     },
