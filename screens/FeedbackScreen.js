@@ -3,6 +3,7 @@ import {Button, View, Text, StyleSheet, TouchableHighlight, ScrollView, Alert} f
 import Slider from '@react-native-community/slider';
 import {CourseContext} from './CourseContext';
 
+// FeedbackScreen provides a feedback form
 function FeedbackScreen({route, navigation}) {
     // Getting course
     const {course} = route.params;
@@ -20,6 +21,7 @@ function FeedbackScreen({route, navigation}) {
     // Updating the Average Score based on new Submit
     useEffect(() => {
         if (submitted) {
+            // Calculating new average score based on current average score
             const newAverage =
                 ((scores[course]?.averageScore || 0) * (scores[course]?.numberOfReviews || 0) +
                     (rating1 + rating2 + rating3 + rating4 + rating5) / 5) /
@@ -34,6 +36,7 @@ function FeedbackScreen({route, navigation}) {
             }));
 
             setSubmitted(false);
+            // Showing a Success alert after submission
             Alert.alert('Erfolg', 'Vielen Dank für das Feedback!');
             navigation.goBack(); // Navigating back to CourseScreen
         }

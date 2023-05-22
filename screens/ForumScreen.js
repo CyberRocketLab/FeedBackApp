@@ -30,6 +30,7 @@ function ForumScreen({route}) {
         });
     }, []);
 
+    // Function to send a message.
     const sendMessage = async () => {
         if (input.trim() !== '') {
             const newMessages = [...messages, input];
@@ -44,6 +45,7 @@ function ForumScreen({route}) {
         }
     };
 
+    // Function to delete message
     const deleteMessage = async (index) => {
         const updatedMessages = [...messages];
         updatedMessages.splice(index, 1);
