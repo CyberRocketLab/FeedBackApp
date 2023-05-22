@@ -4,6 +4,11 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
+import {enableScreens} from 'react-native-screens';
+
+enableScreens();
+
+
 import FacultiesScreen from './screens/FacultiesScreen';
 import CoursesScreen from './screens/CoursesScreen';
 import CourseScreen from './screens/CourseScreen';
@@ -14,8 +19,8 @@ import PersonalSettingsScreen from './screens/PersonalSettingsScreen';
 import {CourseContext} from './screens/CourseContext';
 
 // Add the new imports
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {SafeAreaProvider} from "react-native-safe-area-context";
+import {GestureHandlerRootView} from 'react-native-gesture-handler';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -23,24 +28,27 @@ const Tab = createBottomTabNavigator();
 function HomeStack() {
     return (
         <Stack.Navigator initialRouteName="Faculties">
-            <Stack.Screen name="Fakultäten" component={FacultiesScreen} options={{ headerBackTitle: 'Your Desired Title' }}/>
-            <Stack.Screen name="Lehrveranstaltungen" component={CoursesScreen} options={{ headerBackTitle: 'Your Desired Title' }}/>
-            <Stack.Screen name="Lehrveranstaltung" component={CourseScreen} options={{ headerBackTitle: 'Your Desired Title' }}/>
-            <Stack.Screen name="Umfrage" component={FeedbackScreen} options={{ headerBackTitle: 'Your Desired Title' }}/>
-            <Stack.Screen name="Forum" component={ForumScreen} options={{ headerBackTitle: 'Back' }}/>
+            <Stack.Screen name="Fakultäten" component={FacultiesScreen}
+                          options={{headerBackTitle: 'Your Desired Title'}}/>
+            <Stack.Screen name="Lehrveranstaltungen" component={CoursesScreen}
+                          options={{headerBackTitle: 'Your Desired Title'}}/>
+            <Stack.Screen name="Lehrveranstaltung" component={CourseScreen}
+                          options={{headerBackTitle: 'Your Desired Title'}}/>
+            <Stack.Screen name="Umfrage" component={FeedbackScreen} options={{headerBackTitle: 'Your Desired Title'}}/>
+            <Stack.Screen name="Forum" component={ForumScreen} options={{headerBackTitle: 'Back'}}/>
         </Stack.Navigator>
-        );
+    );
 }
 
 function SettingsStack() {
     return (
         <Stack.Navigator initialRouteName="Personal Settings"
-            screenOptions={{
-            headerShown: false,
-            }}>
+                         screenOptions={{
+                             headerShown: false,
+                         }}>
             <Stack.Screen name="Personal Settings" component={PersonalSettingsScreen}/>
         </Stack.Navigator>
-        );
+    );
 }
 
 function App() {
@@ -48,7 +56,7 @@ function App() {
 
     return (
         <SafeAreaProvider>
-            <GestureHandlerRootView style={{ flex: 1 }}>
+            <GestureHandlerRootView style={{flex: 1}}>
                 <CourseContext.Provider value={{scores, setScores}}>
                     <NavigationContainer>
                         <Tab.Navigator
@@ -61,16 +69,16 @@ function App() {
                                         iconName = focused ? 'settings' : 'settings-outline';
                                     }
                                     return <Ionicons name={iconName} size={size} color={color}/>;
-                                    },
+                                },
                                 tabBarActiveTintColor: '#3182CE',
                                 tabBarShowLabel: false,
                                 tabBarInactiveTintColor: 'gray',
                                 tabBarStyle: [
-                                    { display: "flex" },
+                                    {display: "flex"},
                                     null
                                 ]
                             })}
-                            >
+                        >
                             <Tab.Screen
                                 name="Home"
                                 component={HomeStack}
@@ -79,13 +87,13 @@ function App() {
                             <Tab.Screen
                                 name="Settings"
                                 component={SettingsStack}
-                                options={{ title: 'Persönliche Daten' }}/>
+                                options={{title: 'Persönliche Daten'}}/>
                         </Tab.Navigator>
                     </NavigationContainer>
                 </CourseContext.Provider>
             </GestureHandlerRootView>
         </SafeAreaProvider>
-        );
+    );
 }
 
 export default App;
