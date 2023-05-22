@@ -3,8 +3,10 @@ import {View, FlatList, Text, StyleSheet, TouchableHighlight, Image} from 'react
 
 function FacultiesScreen({navigation}) {
 
+    // Array of faculties that will be displayed in facultiesScreen
     const faculties = ['Informatik', 'Chemie', 'Mathematik'];
 
+    // Navigates to CoursesScreen on press
     const renderItem = ({item}) => (
         <TouchableHighlight
             style={styles.item}
