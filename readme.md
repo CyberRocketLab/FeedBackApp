@@ -21,3 +21,6 @@ Dauer der Entwicklung:
 
 Weitere Anmerkungen:
 [...]
+
+Link to the app in expo:
+https://expo.dev/%40rocket2033/FeedBackApp?serviceType=eas&distribution=expo-go&scheme=exp%2BFeedBackApp&channel=alex_local&sdkVersion=48.0.0
