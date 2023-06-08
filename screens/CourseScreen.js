@@ -33,8 +33,7 @@ function CourseScreen({route, navigation}) {
     return (
         <View style={styles.container}>
             <Text style={styles.courseTitle}>{course}</Text>
-            <Text style={styles.averageScore}>Bewertung: {averageScore}</Text>
-            <Text style={styles.averageScore}>Weiterempfehlung: {averageScore - 1} </Text>
+            <Text style={styles.averageScore}>Weiterempfehlung: {averageScore} </Text>
             <View style={styles.desBut}>
                 <View style={styles.descriptionContainer}>
                     <ScrollView>
@@ -53,9 +52,9 @@ function CourseScreen({route, navigation}) {
                     <TouchableHighlight
                         style={styles.button}
                         underlayColor="#E0DCDC"
-                        onPress={() => navigation.navigate('Forum', {course: course})}
+                        onPress={() => navigation.navigate('Chat', {course: course})}
                     >
-                        <Text style={styles.buttonText}>Forum</Text>
+                        <Text style={styles.buttonText}>Chat</Text>
                     </TouchableHighlight>
 
                 </View>

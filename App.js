@@ -33,7 +33,7 @@ function HomeStack() {
             <Stack.Screen name="Lehrveranstaltung" component={CourseScreen}
                           options={{headerBackTitle: 'Your Desired Title'}}/>
             <Stack.Screen name="Umfrage" component={FeedbackScreen} options={{headerBackTitle: 'Your Desired Title'}}/>
-            <Stack.Screen name="Forum" component={ForumScreen} options={{headerBackTitle: 'Back'}}/>
+            <Stack.Screen name="Chat" component={ForumScreen} options={{headerBackTitle: 'Back'}}/>
         </Stack.Navigator>
     );
 }
