@@ -62,9 +62,9 @@ function App() {
                                 tabBarIcon: ({focused, color, size}) => {
                                     let iconName;
                                     if (route.name === 'Home') {
-                                        iconName = focused ? 'school' : 'school-outline';
+                                        iconName = focused ? 'home' : 'home';
                                     } else if (route.name === 'Settings') {
-                                        iconName = focused ? 'settings' : 'settings-outline';
+                                        iconName = focused ? 'person' : 'person';
                                     }
                                     return <Ionicons name={iconName} size={size} color={color}/>;
                                 },
