@@ -50,8 +50,11 @@ function FeedbackScreen({route, navigation}) {
         <View style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <View style={styles.card}>
-                    <Text style={styles.label}>Die Lehrperson ist zur Vermittlung der Inhalte der LV
-                        geeignet:</Text>
+                    <Text style={styles.label}>Die Lehrperson ist zur Vermittlung der Inhalte der LV geeignet:</Text>
+                    <View style={styles.sliderRating}>
+                        <Text  style={styles.badGoodRating} >Stimme nicht zu</Text>
+                        <Text style={styles.badGoodRating}>Stimme völlig zu</Text>
+                    </View>
                     <Text style={styles.ratingNumber}>{rating1}</Text>
                     <Slider
 
@@ -66,6 +69,10 @@ function FeedbackScreen({route, navigation}) {
                 <View style={styles.card}>
                     <Text style={styles.label}>Die Anzahl der ECTS-Punkte entspricht dem Aufwand der
                         LV:</Text>
+                    <View style={styles.sliderRating}>
+                        <Text  style={styles.badGoodRating} >Stimme nicht zu</Text>
+                        <Text style={styles.badGoodRating}>Stimme völlig zu</Text>
+                    </View>
                     <Text style={styles.ratingNumber}>{rating2}</Text>
                     <Slider
                         value={rating2}
@@ -78,6 +85,10 @@ function FeedbackScreen({route, navigation}) {
                 <View style={styles.card}>
                     <Text style={styles.label}>Ich empfinde die Inhalte als wichtig für kommende
                         LVs: </Text>
+                    <View style={styles.sliderRating}>
+                        <Text  style={styles.badGoodRating} >Stimme nicht zu</Text>
+                        <Text style={styles.badGoodRating}>Stimme völlig zu</Text>
+                    </View>
                     <Text style={styles.ratingNumber}>{rating3}</Text>
                     <Slider
                         value={rating3}
@@ -89,6 +100,10 @@ function FeedbackScreen({route, navigation}) {
                 </View>
                 <View style={styles.card}>
                     <Text style={styles.label}>Die Prüfungsanforderungen sind realistisch: </Text>
+                    <View style={styles.sliderRating}>
+                        <Text  style={styles.badGoodRating} >Stimme nicht zu</Text>
+                        <Text style={styles.badGoodRating}>Stimme völlig zu</Text>
+                    </View>
                     <Text style={styles.ratingNumber}>{rating4}</Text>
                     <Slider
                         value={rating4}
@@ -101,6 +116,10 @@ function FeedbackScreen({route, navigation}) {
                 <View style={styles.card}>
                     <Text style={styles.label}>Ich würde die LV an meine Kommiliton*innen
                         weiterempfehlen:</Text>
+                    <View style={styles.sliderRating}>
+                        <Text  style={styles.badGoodRating} >Stimme nicht zu</Text>
+                        <Text style={styles.badGoodRating}>Stimme völlig zu</Text>
+                    </View>
                     <Text style={styles.ratingNumber}>{rating5}</Text>
                     <Slider
                         value={rating5}
@@ -183,6 +202,15 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: "center",
         marginVertical: 5,
+    },
+    sliderRating: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 30,  // add some space between the text and the slider
+    },
+    badGoodRating: {
+        fontSize: 14,
+        color: '#3182CE',
     },
 
 });

@@ -33,7 +33,8 @@ function CourseScreen({route, navigation}) {
     return (
         <View style={styles.container}>
             <Text style={styles.courseTitle}>{course}</Text>
-            <Text style={styles.averageScore}>Schwierigkeitsgrad: {averageScore}</Text>
+            <Text style={styles.averageScore}>Bewertung: {averageScore}</Text>
+            <Text style={styles.averageScore}>Weiterempfehlung: {averageScore - 1} </Text>
             <View style={styles.desBut}>
                 <View style={styles.descriptionContainer}>
                     <ScrollView>
