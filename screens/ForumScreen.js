@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import {
     View,
     TextInput,
@@ -13,11 +13,12 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MaterialIcons} from '@expo/vector-icons';
+import Icon from "react-native-vector-icons/Ionicons";
 
-function ForumScreen({route}) {
+function ForumScreen({route, navigation}) {
     const {course} = route.params;
     const storageKey = `messages_${course}`;
-
+    const [search, setSearch] = useState('');
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
 
@@ -29,6 +30,16 @@ function ForumScreen({route}) {
             }
         });
     }, []);
+
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity onPress={() => console.log('Searching for ' + search)}>
+                    <Icon name="ios-search" size={24} color="black" style={{ marginRight: 10 }}/>
+                </TouchableOpacity>
+            )
+        });
+    }, [navigation, search]);
 
     // Function to send a message.
     const sendMessage = async () => {
@@ -150,6 +161,21 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         textAlignVertical: 'center',
         paddingTop: 10,
+    },
+    searchBar: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#EEE',
+        borderRadius: 8,
+        paddingHorizontal: 8,
+    },
+    searchInput: {
+        flex: 1,
+        height: 40,
+        marginRight: 8,
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        paddingHorizontal: 8,
     },
 });
 
