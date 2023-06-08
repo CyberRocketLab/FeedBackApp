@@ -14,7 +14,7 @@ import {
 function PersonalSettingsScreen() {
     const [name, setName] = useState('Max Müller');
     const [email, setEmail] = useState('maxmueller@gmail.com');
-    const [address, setAddress] = useState('Muster Strasse 88');
+    const [address, setAddress] = useState('Muster Strasse 123');
     const [phone, setPhone] = useState('+49 123 456 7890');
     const [password, setPassword] = useState('********');
 
