@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useLayoutEffect} from 'react';
 import {
     View,
     TextInput,
@@ -13,11 +13,12 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MaterialIcons} from '@expo/vector-icons';
+import Icon from "react-native-vector-icons/Ionicons";
 
-function ForumScreen({route}) {
+function ForumScreen({route, navigation}) {
     const {course} = route.params;
     const storageKey = `messages_${course}`;
-
+    const [search, setSearch] = useState('');
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState('');
 
@@ -30,17 +31,34 @@ function ForumScreen({route}) {
         });
     }, []);
 
+    useLayoutEffect(() => {
+        navigation.setOptions({
+            headerRight: () => (
+                <TouchableOpacity onPress={() => console.log('Searching for ' + search)}>
+                    <Icon name="ios-search" size={24} color="black" style={{ marginRight: 10 }}/>
+                </TouchableOpacity>
+            )
+        });
+    }, [navigation, search]);
+
     // Function to send a message.
     const sendMessage = async () => {
         if (input.trim() !== '') {
-            const newMessages = [...messages, input];
+            const newMessage = {
+                content: input,
+                timestamp: new Date().toLocaleString([], { hour: '2-digit', minute: '2-digit' }), //  timestamp
+            };
+
+            const newMessages = [...messages, newMessage];
             setMessages(newMessages);
+
             // Save messages to AsyncStorage when a new message is sent
             try {
                 await AsyncStorage.setItem(storageKey, JSON.stringify(newMessages));
             } catch (error) {
                 console.error('Error saving data', error);
             }
+
             setInput('');
         }
     };
@@ -73,7 +91,8 @@ function ForumScreen({route}) {
                         >
                             <Image style={styles.avatar} source={require('../image/userImage.png')}/>
                             <View style={styles.messageContent}>
-                                <Text style={styles.messageText}>{message}</Text>
+                                <Text style={styles.messageText}>{message.content}</Text>
+                                <Text style={styles.messageTimestamp}>{message.timestamp}</Text>
                             </View>
                         </TouchableOpacity>
                     ))}
@@ -150,6 +169,26 @@ const styles = StyleSheet.create({
         textAlign: 'left',
         textAlignVertical: 'center',
         paddingTop: 10,
+    },
+    searchBar: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        backgroundColor: '#EEE',
+        borderRadius: 8,
+        paddingHorizontal: 8,
+    },
+    searchInput: {
+        flex: 1,
+        height: 40,
+        marginRight: 8,
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        paddingHorizontal: 8,
+    },
+    messageTimestamp: {
+        fontSize: 12,
+        color: '#AAA',
+        marginTop: 4,
     },
 });
 
