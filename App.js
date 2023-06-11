@@ -27,13 +27,13 @@ function HomeStack() {
     return (
         <Stack.Navigator initialRouteName="Faculties">
             <Stack.Screen name="Fakultäten" component={FacultiesScreen}
-                          options={{headerBackTitle: 'Your Desired Title'}}/>
+                          options={{headerBackTitle: 'Zurück'}}/>
             <Stack.Screen name="Lehrveranstaltungen" component={CoursesScreen}
-                          options={{headerBackTitle: 'Your Desired Title'}}/>
+                          options={{headerBackTitle: 'Zurück'}}/>
             <Stack.Screen name="Lehrveranstaltung" component={CourseScreen}
-                          options={{headerBackTitle: 'Your Desired Title'}}/>
-            <Stack.Screen name="Umfrage" component={FeedbackScreen} options={{headerBackTitle: 'Your Desired Title'}}/>
-            <Stack.Screen name="Chat" component={ForumScreen} options={{headerBackTitle: 'Back'}}/>
+                          options={{headerBackTitle: 'Zurück'}}/>
+            <Stack.Screen name="Umfrage" component={FeedbackScreen} options={{headerBackTitle: 'Zurück'}}/>
+            <Stack.Screen name="Chat" component={ForumScreen} options={{headerBackTitle: 'Zurück'}}/>
         </Stack.Navigator>
     );
 }
